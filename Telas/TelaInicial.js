@@ -4,7 +4,7 @@ import { ImageBackground, Image, StyleSheet, View } from "react-native";
 
 const image = { uri: "https://i.pinimg.com/564x/d9/e5/39/d9e5397d7d084c4009889dfcdf0b5758.jpg" };
 
-const App = () => {
+const App = ({ navigation }) => {
   return(
   <View style={styles.container}>
     <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -17,7 +17,7 @@ const App = () => {
             mode='contained'
             textColor='#000000'
             buttonColor='#AD0505'
-            onPress={() => login('Pressed')}>
+            onPress={() => navigation.navigate('TelaLogin')}>
                  Acessar
         </Button>
         <Button
@@ -25,7 +25,7 @@ const App = () => {
             mode='contained'
             textColor='#000000'
             buttonColor='#AD0505'
-            onPress={('Pressed')}>
+            onPress={() => navigation.navigate('TelaCadastro')}>
                 Cadastrar
         </Button>
     </View>
