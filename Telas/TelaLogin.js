@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Button } from 'react-native-paper'
 import { TextInput, Text, Image, View, StyleSheet } from 'react-native';
 
-const App = () => {
+const App = ({ navigation }) => {
   const login = useState ();
   const senha = useState ();
 
@@ -36,7 +36,7 @@ return(
         mode='contained'
         textColor='#000'
         buttonColor='#B6B6B6'
-        onPress={('Pressed')}>
+        onPress={() => navigation.navigate('TelaSistema')}>
           Acessar
         </Button>
       </View>

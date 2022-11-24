@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -7,6 +6,7 @@ const Stack = createNativeStackNavigator();
 import TelaInicial from './Telas/TelaInicial';
 import TelaLogin from  './Telas/TelaLogin';
 import TelaCadastro from './Telas/TelaCadastro';
+import TelaSistema from './Telas/TelaSistema';
 
 export default function App() {
   return (
@@ -41,6 +41,17 @@ export default function App() {
         name='TelaCadastro' 
         component={TelaCadastro}>
         </Stack.Screen>
+
+        <Stack.Screen
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerShown: false,
+        }}
+        name='TelaSistema'
+        component={TelaSistema}>
+        </Stack.Screen>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
