@@ -6,7 +6,7 @@ const Stack = createNativeStackNavigator();
 import TelaInicial from './Telas/TelaInicial';
 import TelaLogin from  './Telas/TelaLogin';
 import TelaCadastro from './Telas/TelaCadastro';
-import TelaSistema from './Telas/TelaSistema';
+import SistemaNavigator from './Telas/SistemaNavigator';
 
 export default function App() {
   return (
@@ -49,7 +49,7 @@ export default function App() {
           headerShown: false,
         }}
         name='TelaSistema'
-        component={TelaSistema}>
+        component={SistemaNavigator}>
         </Stack.Screen>
 
       </Stack.Navigator>

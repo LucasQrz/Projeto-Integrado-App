@@ -35,8 +35,7 @@ const App = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: 415
+    flex: 1
   },
   image: {
     flex: 1,

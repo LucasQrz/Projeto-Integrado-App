@@ -7,30 +7,32 @@ const App = ({ navigation }) => {
   const senha = useState ();
 
 return(
-    <View style={{flex: 1, backgroundColor: '#000000', width: 415}}>
+    <View style={{flex: 1, backgroundColor: '#000000'}}>
       <View style={{flex: 5, justifyContent: 'flex-end'}}>
 
-        <View style={{alignItems: 'center'}}>
+        <View style={{alignItems: 'center', }}>
           <Image source={require('../Imagens/logoLogin.png')} />
         </View>
-
+        
+      </View>
+      
         <TextInput
           style={styles.inputs}
           placeholder="Email"
           defaultValue={login}
         />
         <TextInput
+          secureTextEntry
           style={styles.inputs}
           placeholder="Senha"
           defaultValue={senha}
         />
-      </View>
-
-      <View style={{alignSelf: 'flex-end', marginRight: 10}}>
+      
+      <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
         <Text style={styles.texto}>Esqueceu a senha?</Text>
       </View>
         
-      <View style={{flex: 5, justifyContent: 'space-between', alignItems: 'center'}}> 
+      <View style={{flex: 5, alignItems: 'center'}}> 
         <Button
         style={styles.botao}
         mode='contained'
@@ -47,7 +49,6 @@ return(
 const styles = StyleSheet.create({
   inputs: {
     borderWidth: 2,
-    borderRadius: 5,
     backgroundColor: '#B6B6B6',
     margin: 5,
     padding: 8
