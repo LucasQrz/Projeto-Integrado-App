@@ -15,8 +15,10 @@ function SistemaNavigator() {
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle:{
-                    backgroundColor: '#343434'
-                }
+                    backgroundColor: '#343434',
+                    borderTopColor: 'transparent'
+                },
+                tabBarActiveTintColor: '#000000'
             }}
         >
 
