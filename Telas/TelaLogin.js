@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
-import { Button } from 'react-native-paper'
-import { TextInput, Text, Image, View, StyleSheet } from 'react-native';
+import { Button, TextInput } from 'react-native-paper'
+import { Text, Image, View, StyleSheet } from 'react-native';
 
 const App = ({ navigation }) => {
   const login = useState ();
@@ -13,19 +13,29 @@ return(
         <View style={{alignItems: 'center', }}>
           <Image source={require('../Imagens/logoLogin.png')} />
         </View>
-        
       </View>
       
         <TextInput
+          underlineColor="#B6B6B6"
+          activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
-          placeholder="Email"
+          label="Email"
           defaultValue={login}
         />
         <TextInput
           secureTextEntry
+          underlineColor="#B6B6B6"
+          activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
-          placeholder="Senha"
+          label="Senha"
           defaultValue={senha}
+          right={
+            <TextInput.Icon
+              icon="eye"
+              size={25}
+              color="blue"
+            />
+          }
         />
       
       <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
@@ -49,7 +59,7 @@ return(
 const styles = StyleSheet.create({
   inputs: {
     borderWidth: 2,
-    backgroundColor: '#B6B6B6',
+    backgroundColor: '#000000',
     margin: 5,
     padding: 8
   },
