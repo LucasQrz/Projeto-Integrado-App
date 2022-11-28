@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {  Text } from 'react-native'
 
 import Inicio from './Sistema/Inicio';
 import Playlist from './Sistema/Playlist';

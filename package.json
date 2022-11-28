@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
     "@react-navigation/bottom-tabs": "^6.4.1",
+    "@react-navigation/drawer": "^6.5.1",
     "@react-navigation/native": "^6.0.14",
     "@react-navigation/native-stack": "^6.9.2",
     "expo": "~47.0.3",
