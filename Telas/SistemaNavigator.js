@@ -14,11 +14,13 @@ function SistemaNavigator() {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle:{
+                tabBarActiveTintColor: '#000000',
+                tabBarStyle: {
+                    paddingBottom: 5,
+                    paddingTop: 5,
                     backgroundColor: '#343434',
                     borderTopColor: 'transparent'
-                },
-                tabBarActiveTintColor: '#000000'
+                }
             }}
         >
 
