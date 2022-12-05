@@ -1,26 +1,24 @@
 import React, { useState} from 'react';
 import { Button, TextInput } from 'react-native-paper'
-import { Text, Image, View, StyleSheet } from 'react-native';
+import { Text, Image, View, StyleSheet, ImageBackground } from 'react-native';
 
 const App = ({ navigation }) => {
-  const login = useState ();
-  const senha = useState ();
 
 return(
-    <View style={{flex: 1, backgroundColor: '#000000'}}>
-      <View style={{flex: 5, justifyContent: 'flex-end'}}>
-
-        <View style={{alignItems: 'center', }}>
-          <Image source={require('../Imagens/logoLogin.png')} />
-        </View>
+  <View style={styles.container}>
+  <ImageBackground source={require('../Assets/fundoLogin.png')} 
+    resizeMode="cover" style={styles.image}>
+    
+      <View style={{alignItems: 'center'}}>
+        <Image source={require('../Assets/logo.png')} />
       </View>
-      
+
+      <View style={styles.back}>
         <TextInput
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
           label="Email"
-          defaultValue={login}
         />
         <TextInput
           secureTextEntry
@@ -28,50 +26,64 @@ return(
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
           label="Senha"
-          defaultValue={senha}
           right={
             <TextInput.Icon
               icon="eye"
               size={25}
-              color="blue"
+              iconColor='gray'
             />
           }
         />
-      
+
       <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
         <Text style={styles.texto}>Esqueceu a senha?</Text>
       </View>
-        
-      <View style={{flex: 5, alignItems: 'center'}}> 
-        <Button
+    </View>
+
+    <View style={{alignItems: 'center'}}> 
+      <Button
         style={styles.botao}
         mode='contained'
         textColor='#000'
         buttonColor='#B6B6B6'
         onPress={() => navigation.navigate('TelaSistema')}>
-          Acessar
-        </Button>
-      </View>
+        Acessar
+      </Button>
     </View>
+
+  </ImageBackground>
+</View>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
   inputs: {
     borderWidth: 2,
     backgroundColor: '#000000',
     margin: 5,
-    padding: 8
+    padding: 6
   },
-
+  back: {
+    backgroundColor: 'black',
+    borderRadius: 20,
+    margin: 10,
+    padding: 10
+  },
   texto: {
     fontSize: 15,
-    color: '#AD0505'
+    color: '#904B9C',
+    fontSize: 18
   },
-
   botao: {
     marginTop: 50,
-    width: 150
+    width: 150,
   }
 });
 

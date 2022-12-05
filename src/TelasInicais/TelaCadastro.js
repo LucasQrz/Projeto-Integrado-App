@@ -1,26 +1,23 @@
-import React, { useState} from 'react';
+import React, { useContext } from "react";
 import { Button, TextInput } from 'react-native-paper'
-import { Text, Image, View, StyleSheet } from 'react-native';
+import { ImageBackground, Image, StyleSheet, View, Text } from "react-native";
 
 const App = () => {
-  const login = useState ();
-  const senha = useState ();
-
-return(
-    <View style={{flex: 1, backgroundColor: '#000000'}}>
-      <View style={{flex: 5, justifyContent: 'flex-end'}}>
-
+  return(
+  <View style={styles.container}>
+    <ImageBackground source={require('../Assets/fundoCadastro.png')} 
+      resizeMode="cover" style={styles.image}>
+      
         <View style={{alignItems: 'center'}}>
-          <Image source={require('../Imagens/logoLogin.png')} />
+          <Image source={require('../Assets/logo.png')} />
         </View>
-      </View>
 
+        <View style={styles.back}>
         <TextInput
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
           label="Email"
-          defaultValue={login}
         />
         <TextInput
           secureTextEntry
@@ -28,12 +25,11 @@ return(
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
           label="Senha"
-          defaultValue={senha}
           right={
             <TextInput.Icon
               icon="eye"
               size={25}
-              color="blue"
+              iconColor='gray'
             />
           }
         />
@@ -42,52 +38,64 @@ return(
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
-          label="Confirmar Senha"
-          defaultValue={senha}
+          label="Confirmar senha"
           right={
             <TextInput.Icon
               icon="eye"
               size={25}
-              color="blue"
-            />
+              iconColor='gray'
+          />
           }
         />
-      
 
-      <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
-        <Text style={styles.texto}>Já tem uma conta?</Text>
+        <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
+          <Text style={styles.texto}>Já tem uma conta?</Text>
+        </View>
       </View>
-        
-      <View style={{flex: 5, justifyContent: 'space-between', alignItems: 'center'}}> 
+
+      <View style={{alignItems: 'center'}}> 
         <Button
-        style={styles.botao}
-        mode='contained'
-        textColor='#000'
-        buttonColor='#B6B6B6'
-        onPress={('Pressed')}>
+          style={styles.botao}
+          mode='contained'
+          textColor='#000'
+          buttonColor='#B6B6B6'
+          onPress={() => navigation.navigate('TelaSistema')}>
           Cadastrar
         </Button>
       </View>
-    </View>
-  )
-}
+
+    </ImageBackground>
+  </View>
+)};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
   inputs: {
     borderWidth: 2,
     backgroundColor: '#000000',
     margin: 5,
-    padding: 8
+    padding: 6
   },
-
+  back: {
+    backgroundColor: 'black',
+    borderRadius: 20,
+    margin: 10,
+    padding: 10
+  },
   texto: {
     fontSize: 15,
-    color: '#AD0505'
+    color: '#904B9C',
+    fontSize: 18
   },
-
   botao: {
     marginTop: 50,
-    width: 150
+    width: 150,
   }
 });
 

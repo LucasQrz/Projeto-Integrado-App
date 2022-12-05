@@ -3,10 +3,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator();
 
-import TelaInicial from './Telas/TelaInicial';
-import TelaLogin from  './Telas/TelaLogin';
-import TelaCadastro from './Telas/TelaCadastro';
-import SistemaNavigator from './Telas/SistemaNavigator';
+import TelaInicial from './src/TelasInicais/TelaInicial';
+import TelaLogin from  './src/TelasInicais/TelaLogin';
+import TelaCadastro from './src/TelasInicais/TelaCadastro';
+import SistemaNavigator from './src/Routes/SistemaNavigator';
 
 export default function App() {
   return (

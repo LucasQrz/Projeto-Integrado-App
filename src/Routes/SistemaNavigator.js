@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Inicio from './Sistema/Inicio';
-import Playlist from './Sistema/Playlist';
-import Favoritos from './Sistema/Favoritos';
-import Config from './Sistema/Config';
+import Inicio from '../Sistema/Inicio';
+import Playlist from '../Sistema/Playlist';
+import Favoritos from '../Sistema/Favoritos';
+import Config from '../Sistema/Config';
 
 import { Ionicons } from '@expo/vector-icons'
 
