@@ -46,7 +46,7 @@ return(
         mode='contained'
         textColor='#000'
         buttonColor='#B6B6B6'
-        onPress={() => navigation.navigate('TelaSistema')}>
+        onPress={() => navigation.navigate('SistemaNavigator')}>
         Acessar
       </Button>
     </View>

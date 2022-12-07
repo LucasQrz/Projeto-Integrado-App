@@ -1,90 +1,22 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Inicio from '../Sistema/Inicio';
-import Playlist from '../Sistema/Playlist';
-import Favoritos from '../Sistema/Favoritos';
-import Config from '../Sistema/Config';
+import {Inicio} from '../Sistema/Inicio';
+import {Playlist} from '../Sistema/Playlist';
+import {Favoritos} from '../Sistema/Favoritos';
+import {Config} from '../Sistema/Config';
 
-import { Ionicons } from '@expo/vector-icons'
-
-const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function SistemaNavigator() {
     return (
-        <Tab.Navigator
-            screenOptions={{
-                tabBarActiveTintColor: '#000000',
-                tabBarStyle: {
-                    paddingBottom: 5,
-                    paddingTop: 5,
-                    backgroundColor: '#343434',
-                    borderTopColor: 'transparent'
-                }
-            }}
-        >
-
-            <Tab.Screen
-                name='Inicio'
-                component={Inicio}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size, focused }) => {
-                        if(focused){
-                            return <Ionicons name='home' size={size} color={"#000000"}/>
-                        }
-
-                        return <Ionicons name='home-outline' size={size} color={"#B6B6B6"}/>
-                    }
-                }}
-            />
-
-            <Tab.Screen
-                name='Playlist'
-                component={Playlist}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size, focused }) => {
-                        if(focused){
-                            return <Ionicons name='play' size={size} color={"#000000"}/>
-                        }
-
-                        return <Ionicons name='play-outline' size={size} color={"#B6B6B6"}/>
-                    }
-                }}
-            />
-
-            <Tab.Screen
-                name='Favoritos'
-                component={Favoritos}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size, focused }) => {
-                        if(focused){
-                            return <Ionicons name='star' size={size} color={"#000000"}/>
-                        }
-
-                        return <Ionicons name='star-outline' size={size} color={"#B6B6B6"}/>
-                    }
-                }}
-            />
-
-            <Tab.Screen
-                name='Configuração'
-                component={Config}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color, size, focused }) => {
-                        if(focused){
-                            return <Ionicons name='cog' size={size} color={"#000000"}/>
-                        }
-
-                        return <Ionicons name='cog-outline' size={size} color={"#B6B6B6"}/>
-                    }
-                }}
-            />
-        </Tab.Navigator>
-
-    )
+        <Drawer.Navigator>
+            <Drawer.Screen name="Inicio" component={Inicio} />
+            <Drawer.Screen name="Playlist" component={Playlist} />
+            <Drawer.Screen name="Favoritos" component={Favoritos} />
+            <Drawer.Screen name="Config" component={Config} />
+        </Drawer.Navigator>
+    );
 }
 
 export default SistemaNavigator;

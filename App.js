@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -42,13 +44,14 @@ export default function App() {
         component={TelaCadastro}>
         </Stack.Screen>
 
-        <Stack.Screen
+        {/* ARRUMAR NAVEGAÇÃO PARA TELA QUE RECEBE O DRAWER (SistemaNavigator) */}
+        <Stack.Screen 
         options={{
           title: '',
           headerTransparent: true,
           headerShown: false,
         }}
-        name='TelaSistema'
+        name='SistemaNavigator' 
         component={SistemaNavigator}>
         </Stack.Screen>
 
@@ -56,3 +59,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
