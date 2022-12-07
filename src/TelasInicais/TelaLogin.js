@@ -6,7 +6,7 @@ const App = ({ navigation }) => {
 
 return(
   <View style={styles.container}>
-  <ImageBackground source={require('../Assets/fundoLogin.png')} 
+  <ImageBackground source={require('../Assets/fundoLogin.jpg')} 
     resizeMode="cover" style={styles.image}>
     
       <View style={{alignItems: 'center'}}>

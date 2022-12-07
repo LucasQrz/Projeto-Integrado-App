@@ -44,7 +44,6 @@ export default function App() {
         component={TelaCadastro}>
         </Stack.Screen>
 
-        {/* ARRUMAR NAVEGAÇÃO PARA TELA QUE RECEBE O DRAWER (SistemaNavigator) */}
         <Stack.Screen 
         options={{
           title: '',

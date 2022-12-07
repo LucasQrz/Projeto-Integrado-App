@@ -5,7 +5,7 @@ import { ImageBackground, Image, StyleSheet, View, Text } from "react-native";
 const App = () => {
   return(
   <View style={styles.container}>
-    <ImageBackground source={require('../Assets/fundoCadastro.png')} 
+    <ImageBackground source={require('../Assets/fundoCadastro.jpg')} 
       resizeMode="cover" style={styles.image}>
       
         <View style={{alignItems: 'center'}}>

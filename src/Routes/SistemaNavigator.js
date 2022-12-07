@@ -16,7 +16,7 @@ function SistemaNavigator() {
             <Drawer.Screen name="Favoritos" component={Favoritos} />
             <Drawer.Screen name="Config" component={Config} />
         </Drawer.Navigator>
-    );
+    );    
 }
 
 export default SistemaNavigator;
