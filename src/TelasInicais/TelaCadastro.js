@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button, TextInput } from 'react-native-paper'
 import { ImageBackground, Image, StyleSheet, View, Text } from "react-native";
 
-const App = () => {
+const App = ({ navigation }) => {
   return(
   <View style={styles.container}>
     <ImageBackground source={require('../Assets/fundoCadastro.jpg')} 
@@ -59,7 +59,7 @@ const App = () => {
           mode='contained'
           textColor='#000'
           buttonColor='#B6B6B6'
-          onPress={() => navigation.navigate('TelaSistema')}>
+          onPress={() => navigation.navigate('TelaLogin')}>
           Cadastrar
         </Button>
       </View>
