@@ -1,21 +1,64 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Inicio from '../Sistema/Inicio';
 import Playlist from '../Sistema/Playlist';
-import Favoritos from '../Sistema/Favoritos';
+import Avaliados from '../Sistema/Avaliados';
 import Config from '../Sistema/Config';
-import { EditDrawer } from './EditDrawer';
+import Perfil from '../Sistema/Perfil';
+import Lista from '../Sistema/ListaFilmes';
+import EditDrawer from './EditDrawer';
 
 const Drawer = createDrawerNavigator();
 
 function SistemaNavigator() {
     return (
-        <Drawer.Navigator drawerContent={(props) => <EditDrawer{...props}/>}>
-            <Drawer.Screen name="Inicio" component={Inicio} />
-            <Drawer.Screen name="Playlist" component={Playlist} />
-            <Drawer.Screen name="Favoritos" component={Favoritos} />
-            <Drawer.Screen name="Configurações" component={Config} />
+        <Drawer.Navigator drawerContent={(props) => <EditDrawer{...props}/>}
+            screenOptions={{
+            drawerActiveBackgroundColor: '#954DFF',
+            drawerActiveTintColor: '#000000',
+            drawerInactiveTintColor: '#FCFCFC',
+            drawerLabelStyle: {marginLeft: -25, fontSize: 16}}} >
+            <Drawer.Screen name="Inicio" component={Inicio} 
+            options={{headerStyle: 
+            {backgroundColor: '#343434'},
+            headerTintColor: '#fff',
+            drawerIcon: ({color}) => (
+                <Ionicons name='planet-outline' size={22} color={color} />
+            )}}
+            />
+
+            <Drawer.Screen name="Playlist" component={Playlist} 
+            options={{drawerIcon: ({color}) => (
+                <Ionicons name='play-outline' size={22} color={color} />
+            )}}
+            />
+
+            <Drawer.Screen name="Avaliados" component={Avaliados} 
+            options={{drawerIcon: ({color}) => (
+                <Ionicons name='star-outline' size={22} color={color} />
+            )}}
+            />
+
+             <Drawer.Screen name="Lista de Filmes" component={Lista} 
+            options={{drawerIcon: ({color}) => (
+                <Ionicons name='list-outline' size={22} color={color} />
+            )}}
+            />
+
+            <Drawer.Screen name="Perfil" component={Perfil} 
+            options={{drawerIcon: ({color}) => (
+                <Ionicons name='person-outline' size={22} color={color} />
+            )}}
+            />
+            
+            <Drawer.Screen name="Configurações" component={Config} 
+            options={{drawerIcon: ({color}) => (
+                <Ionicons name='settings-outline' size={22} color={color} />
+            )}}
+            />
         </Drawer.Navigator>
     );    
 }

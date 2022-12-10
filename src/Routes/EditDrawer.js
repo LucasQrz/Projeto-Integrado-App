@@ -1,59 +1,61 @@
 import React from "react";
-import {View, StyleSheet  } from "react-native";
+import {View, Text, ImageBackground, Image, TouchableOpacity } from "react-native";
+import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch }
-from 'react-native-paper'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export function EditDrawer(props) {
+const EditDrawer = (props) => {
     return(
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: '#26034D'}}>
             <DrawerContentScrollView {...props}>
-                <View style={styles.drawerContent}>
-                    <View style={[styles.userInfoSection, {flexDirection: 'row'}]}>
-                        <View style={{
-                            marginTop: 15,
-                        }}>
-                            <Avatar.Image source={require('../Assets/icon.png')}/>
-                        </View>
-                        <View style={{marginLeft: 9, marginTop: 15}}>
-                            <Title style={styles.title}>Lusca</Title>
-                            <Caption style={styles.capition}>@lusca</Caption>
-                        </View>
+                {/* <ImageBackground source={require('../Assets/fundoPerfil.jpeg')}
+                style={{padding: 20}}> */}
+                <View style={{padding: 20}}>
+                    <View >
+                    <Image source={require('../Assets/icon.png')} 
+                        style={{height: 60, width: 60, borderRadius: 40, marginBottom: 10, marginRight: 20}}
+                    />
+                    <Text style={{color: '#FCFCFC', fontSize: 18, marginBottom: 5}}>Lucas</Text>
                     </View>
-                    <View style={[styles.row, styles.userInfoSection]}>
-                        <View style={styles.section}>
-                            <Paragraph style={[styles.paragraph, styles.capition]}>80</Paragraph>
-                            <Caption style={styles.capition}>Seguindo</Caption>
-                        </View>
-                        <View style={[styles.section, {marginLeft: 15}]}>
-                            <Paragraph style={[styles.paragraph, styles.capition]}>20</Paragraph>
-                            <Caption style={styles.capition}>Seguidores</Caption>
-                        </View>
-                    </View>
-                    <Drawer.Section style={{flex: 1, marginTop: 15}}>
-                        <DrawerItem label="Início" onPress={() => {props.navigation.navigate('Inicio')}}/>
-                        <DrawerItem label="Playlist" onPress={() => {props.navigation.navigate('Playlist')}}/>
-                        <DrawerItem label="Favoritos" onPress={() => {props.navigation.navigate('Favoritos')}}/>
-                        <DrawerItem label="Configurações" onPress={() => {props.navigation.navigate('Configurações')}}/>
-                    </Drawer.Section>
-                    <Drawer.Section title="Preferências">
-                        <TouchableRipple>
-                            <View style={styles.preferences}>
-                                <Text>Modo escuro</Text>
-                                <Switch />
-                            </View>
-                        </TouchableRipple>
-                    </Drawer.Section>
+                </View>
+                {/* </ImageBackground> */}
+                <View style={{flex: 1, backgroundColor: '#26034D', paddingTop: 10}}>
+                    <DrawerItemList {...props}/>
                 </View>
             </DrawerContentScrollView>
-            <Drawer.Section style={styles.bottomDrawerSection}>
-                <Drawer.Item label="Sair" onPress={() => {props.navigation.navigate('TelaLogin')}} />
-            </Drawer.Section>
+            <View style={{padding: 20, borderTopWidth: 1, borderTopColor: '#fff'}}>
+                
+                    <View style={{flexDirection: 'row', justifyContent: 'space-around', marginBottom: 15}}>
+                    <Ionicons name='logo-twitter' size={25} color={'#FCFCFC'} 
+                    onPress={() => {props.navigation.navigate}}
+                    />
+                    <Ionicons name='logo-facebook' size={25} color={'#FCFCFC'}/>
+                    <Ionicons name='logo-instagram' size={25} color={'#FCFCFC'}/>
+                    <Ionicons name='logo-github' size={25} color={'#FCFCFC'}/>
+                    </View>
+                
+                <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Ionicons name='share-social-outline' size={22} color={'#fff'}/>
+                    <Text style={{color: '#FCFCFC',fontSize: 16, marginLeft: 5}}>Compartilhar</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {props.navigation.navigate('TelaLogin')}} style={{paddingVertical: 15}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Ionicons name='chatbox-ellipses-outline' size={22} color={'#fff'}/>
+                    <Text style={{color: '#FCFCFC', fontSize: 16, marginLeft: 5}}>Feedback</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {props.navigation.navigate('TelaLogin')}} style={{paddingVertical: 15}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Ionicons name='exit-outline' size={22} color={'#fff'}/>
+                    <Text style={{color: '#FCFCFC', fontSize: 16, marginLeft: 5}}>Sair</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-
-});
+export default EditDrawer

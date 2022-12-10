@@ -5,7 +5,7 @@ import { ImageBackground, Image, StyleSheet, View } from "react-native";
 const App = ({ navigation }) => {
   return(
   <View style={styles.container}>
-    <ImageBackground source={require('../Assets/fundoInicial.jpg')} resizeMode="cover" style={styles.image}>
+    <ImageBackground source={require('../Assets/fundoInicial.png')} resizeMode="cover" style={styles.image}>
         <View style={{alignItems: 'center'}}>
           <Image source={require('../Assets/logo.png')} />
         </View>
