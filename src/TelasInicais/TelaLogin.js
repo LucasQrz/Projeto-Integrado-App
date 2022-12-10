@@ -1,8 +1,12 @@
 import React, { useState} from 'react';
 import { Button, TextInput } from 'react-native-paper'
-import { Text, Image, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import {Ionicons  } from '@expo/vector-icons';
+
 
 const App = ({ navigation }) => {
+  
+
 
 return(
   <View style={styles.container}>
