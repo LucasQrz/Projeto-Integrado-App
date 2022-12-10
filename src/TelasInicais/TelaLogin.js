@@ -4,7 +4,7 @@ import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from
 import {Ionicons  } from '@expo/vector-icons';
 
 
-const App = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [inputs, setInputs] = useState('');
   const [ocultarSenha, setOcultarsenha] = useState(true);
 
@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default Login;

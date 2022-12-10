@@ -4,7 +4,7 @@ import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from
 import {Ionicons} from '@expo/vector-icons';
 
 
-const App = ({ navigation }) => {
+const Cadastro = ({ navigation }) => {
   const [input, setInput ] = useState('');
   const [hidePass, setHidepass] = useState(true);
   const [input2, setInput2 ] = useState('');
@@ -153,4 +153,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default Cadastro;
