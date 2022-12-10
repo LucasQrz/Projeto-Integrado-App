@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderRadius: 5,
     height:70,
-    alignItems:'center',
+    alignItems:'center'
 
   },
   input:{
@@ -146,9 +146,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#904B9C',
     fontSize: 18
+  },
+  botao: {
+    marginTop: 50,
+    width: 150
   }
-
-  
 });
 
 export default App;

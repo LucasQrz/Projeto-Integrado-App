@@ -5,8 +5,8 @@ import {Ionicons  } from '@expo/vector-icons';
 
 
 const App = ({ navigation }) => {
-  
-
+  const [inputs, setInputs] = useState('');
+  const [ocultarSenha, setOcultarsenha] = useState(true);
 
 return(
   <View style={styles.container}>
@@ -18,30 +18,37 @@ return(
       </View>
 
       <View style={styles.back}>
-        <TextInput
+      <TextInput
+          backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
-          style={styles.inputs}
+          style={styles.email}
           label="Email"
         />
+      <View style={styles.campoSenha}>
         <TextInput
-          secureTextEntry
+          backgroundColor="#000000"
+          secureTextEntry={ocultarSenha}
+          value={inputs}
+          onChangeText={ (texto) => setInputs(texto)}
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
           style={styles.inputs}
           label="Senha"
-          right={
-            <TextInput.Icon
-              icon="eye"
-              size={25}
-              iconColor='gray'
-            />
-          }
         />
+        <TouchableOpacity style={styles.icone} onPress={ () => setOcultarsenha(!ocultarSenha)}>
+         {ocultarSenha ? 
+          <Ionicons name="eye" size={25} color='gray'/>
+          :
+          <Ionicons name="eye-off" size={25} color='gray'/>
+        }
+        </TouchableOpacity>    
+      </View>
 
-      <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
+        <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
         <Text style={styles.texto}>Esqueceu a senha?</Text>
       </View>
+    
     </View>
 
     <View style={{alignItems: 'center'}}> 
@@ -57,8 +64,8 @@ return(
 
   </ImageBackground>
 </View>
-  )
-}
+  
+)};
 
 const styles = StyleSheet.create({
   container: {
@@ -68,14 +75,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+  campoSenha:{
+    flexDirection:"row",
+    width: '100%',
+    backgroundColor:'#000000',
+    borderRadius: 5,
+    height:70,
+    alignItems: 'center'
+  },
   inputs: {
-    borderWidth: 2,
-    backgroundColor: '#000000',
-    margin: 5,
-    padding: 6
+    width: '85%',
+    height:50,
+  },
+  icone:{
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   back: {
-    backgroundColor: 'black',
+    backgroundColor: '#000000',
     borderRadius: 20,
     margin: 10,
     padding: 10
