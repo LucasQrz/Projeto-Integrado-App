@@ -1,8 +1,15 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { Button, TextInput } from 'react-native-paper'
-import { ImageBackground, Image, StyleSheet, View, Text } from "react-native";
+import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import {Ionicons} from '@expo/vector-icons';
+
 
 const App = ({ navigation }) => {
+  const [input, setInput ] = useState('');
+  const [hidePass, setHidepass] = useState(true);
+  const [input2, setInput2 ] = useState('');
+  const [hidePass2, setHidepass2] = useState(true);
+
   return(
   <View style={styles.container}>
     <ImageBackground source={require('../Assets/fundoCadastro.jpg')} 
@@ -14,39 +21,53 @@ const App = ({ navigation }) => {
 
         <View style={styles.back}>
         <TextInput
+          style={styles.email}
+          backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
-          style={styles.inputs}
           label="Email"
         />
-        <TextInput
-          secureTextEntry
+
+        <View style={styles.senha}>
+        <TextInput 
+          backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
-          style={styles.inputs}
-          label="Senha"
-          right={
-            <TextInput.Icon
-              icon="eye"
-              size={25}
-              iconColor='gray'
-            />
-          }
+          secureTextEntry={hidePass}
+          style={styles.input}
+          value={input}
+          onChangeText={ (texto) => setInput(texto)}
+          label="Senha" 
         />
+        <TouchableOpacity style={styles.icon} onPress={ () => setHidepass(!hidePass)}>
+         {hidePass ? 
+          <Ionicons name="eye" size={25} color='gray'/>
+          :
+          <Ionicons name="eye-off" size={25} color='gray'/>
+
+          }
+        </TouchableOpacity>
+        </View>
+
+        <View style={styles.repeteSenha}>
         <TextInput
-          secureTextEntry
+          secureTextEntry={hidePass2}
+          value={input2}
+          onChangeText={ (texto) => setInput2(texto)}
+          backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
-          style={styles.inputs}
+          style={styles.input2}
           label="Confirmar senha"
-          right={
-            <TextInput.Icon
-              icon="eye"
-              size={25}
-              iconColor='gray'
-          />
-          }
         />
+        <TouchableOpacity style={styles.icon2} onPress={ () => setHidepass2(!hidePass2)}>
+          {hidePass2 ? 
+          <Ionicons name="eye" size={25} color='gray'/>
+          :
+          <Ionicons name="eye-off" size={25} color='gray'/>
+          }   
+        </TouchableOpacity>
+        </View>
 
         <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
           <Text style={styles.texto}>Já tem uma conta?</Text>
@@ -76,14 +97,47 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  inputs: {
-    borderWidth: 2,
+  senha: {
+    flexDirection: "row",
+    width: '100%',
     backgroundColor: '#000000',
-    margin: 5,
-    padding: 6
+    borderRadius: 5,
+    height:70,
+    alignItems:'center'
+
+  },
+  input:{
+    width: '85%',
+    height: 50,
+    pedding: 8
+  },
+  icon:{
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems:'center'
+  },
+  repeteSenha:{
+    flexDirection: "row",
+    width: '100%',
+    backgroundColor: '#000000',
+    borderRadius: 5,
+    height:70,
+    alignItems:'center'
+  },
+  input2: {
+    width: '85%',
+    height: 50,
+    pedding: 8
+  },
+  icon2: {
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   back: {
-    backgroundColor: 'black',
+    backgroundColor: '#000000',
     borderRadius: 20,
     margin: 10,
     padding: 10
@@ -95,7 +149,7 @@ const styles = StyleSheet.create({
   },
   botao: {
     marginTop: 50,
-    width: 150,
+    width: 150
   }
 });
 
