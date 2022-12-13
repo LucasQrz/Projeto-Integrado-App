@@ -3,8 +3,8 @@ import React from 'react'
 
 const ListaFilmes = () => {
   return (
-    <View>
-      <Text>ListaFilmes</Text>
+    <View style={{flex: 1, backgroundColor: '#000000'}}>
+      <Text></Text>
     </View>
   )
 }

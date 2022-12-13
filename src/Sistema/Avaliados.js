@@ -3,8 +3,8 @@ import React from 'react'
 
 const Favoritos = () => {
   return (
-    <View>
-      <Text>Favoritos</Text>
+    <View style={{flex: 1, backgroundColor: '#000000'}}>
+      <Text></Text>
     </View>
   )
 }

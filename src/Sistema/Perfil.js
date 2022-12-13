@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Perfil = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#622F6B'}}>
+    <View style={{flex: 1, backgroundColor: '#000000'}}>
       <View style={{alignItems: 'center', padding: 30}}>
 
         <Image source={require('../Assets/icon.png')} style={styles.image}/>

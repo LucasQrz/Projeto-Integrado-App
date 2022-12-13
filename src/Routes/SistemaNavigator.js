@@ -23,43 +23,55 @@ function SistemaNavigator() {
             drawerLabelStyle: {marginLeft: -25, fontSize: 16}}} >
 
             <Drawer.Screen name="Inicio" component={Inicio} 
-            options={{headerStyle: 
-            {backgroundColor: '#343434'},
-            headerTintColor: '#fff',
-            drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='planet-outline' size={22} color={color} />
             )}}
             />
 
             <Drawer.Screen name="Playlist" component={Playlist} 
-            options={{drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='play-outline' size={22} color={color} />
             )}}
             />
 
              <Drawer.Screen name="Lista de Filmes" component={Lista} 
-            options={{drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='list-outline' size={22} color={color} />
             )}}
             />
 
             <Drawer.Screen name="Avaliados" component={Avaliados} 
-            options={{drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='star-outline' size={22} color={color} />
             )}}
             />
 
             <Drawer.Screen name="Perfil" component={Perfil} 
-            options={{headerStyle: 
-            {backgroundColor: '#343434'},
-            headerTintColor: '#fff',
-            drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='person-outline' size={22} color={color} />
             )}}
             />
             
             <Drawer.Screen name="Configurações" component={Config} 
-            options={{drawerIcon: ({color}) => (
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff',
+                drawerIcon: ({color}) => (
                 <Ionicons name='settings-outline' size={22} color={color} />
             )}}
             />

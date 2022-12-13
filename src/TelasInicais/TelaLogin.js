@@ -23,6 +23,7 @@ return(
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
           style={styles.email}
+          textColor="#fff"
           label="Email"
         />
       <View style={styles.campoSenha}>
@@ -33,6 +34,7 @@ return(
           onChangeText={ (texto) => setInputs(texto)}
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
+          textColor="#fff"
           style={styles.inputs}
           label="Senha"
         />
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#000000',
     borderRadius: 5,
     height:70,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   inputs: {
     width: '85%',
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderRadius: 20,
     margin: 10,
-    padding: 10
+    padding: 10,
   },
   texto: {
     fontSize: 15,

@@ -3,14 +3,13 @@ import {View, Text, ImageBackground, Image, TouchableOpacity } from "react-nativ
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const EditDrawer = (props) => {
     return(
         <View style={{flex: 1, backgroundColor: '#26034D'}}>
             <DrawerContentScrollView {...props}>
-                {/* <ImageBackground source={require('../Assets/fundoPerfil.jpeg')}
-                style={{padding: 20}}> */}
+                <ImageBackground source={require('../Assets/fundoPerfil.jpeg')}
+                style={{padding: 20}}>
                 <View style={{padding: 20}}>
                     <View >
                     <Image source={require('../Assets/icon.png')} 
@@ -19,7 +18,7 @@ const EditDrawer = (props) => {
                     <Text style={{color: '#FCFCFC', fontSize: 18, marginBottom: 5}}>Lucas</Text>
                     </View>
                 </View>
-                {/* </ImageBackground> */}
+                </ImageBackground>
                 <View style={{flex: 1, backgroundColor: '#26034D', paddingTop: 10}}>
                     <DrawerItemList {...props}/>
                 </View>

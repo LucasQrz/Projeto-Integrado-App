@@ -25,6 +25,7 @@ const Cadastro = ({ navigation }) => {
           backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
+          textColor="#fff"
           label="Email"
         />
 
@@ -33,6 +34,7 @@ const Cadastro = ({ navigation }) => {
           backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
+          textColor="#fff"
           secureTextEntry={hidePass}
           style={styles.input}
           value={input}
@@ -57,6 +59,7 @@ const Cadastro = ({ navigation }) => {
           backgroundColor="#000000"
           underlineColor="#B6B6B6"
           activeUnderlineColor="#B6B6B6"
+          textColor="#fff"
           style={styles.input2}
           label="Confirmar senha"
         />
@@ -100,7 +103,6 @@ const styles = StyleSheet.create({
   senha: {
     flexDirection: "row",
     width: '100%',
-    backgroundColor: '#000000',
     borderRadius: 5,
     height:70,
     alignItems:'center'
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderRadius: 20,
     margin: 10,
-    padding: 10
+    padding: 10,
   },
   texto: {
     fontSize: 15,
