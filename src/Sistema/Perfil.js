@@ -10,19 +10,21 @@ const Perfil = () => {
 
         <Image source={require('../Assets/icon.png')} style={styles.image}/>
         <View style={styles.icon}>
-        <Ionicons name='camera-outline' size={35} color='#954DFF' />
+        <Ionicons name='camera-outline' size={35} color='#fff' />
         </View>
       </View>
 
       <View>
         <View style={{flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60}}>
-          <Ionicons name='person' size={25} color='#954DFF' />
-          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 5}}>Usuário</Text> 
+          <Ionicons name='person' size={25} color='#fff' />
+          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 10}}>Usuário</Text> 
         </View>
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
             placeholder='Lucas'
+            selectionColor='#fff'
+            placeholderTextColor="#B6B6B6"
             style={styles.input}
           />
         </View>
@@ -30,13 +32,15 @@ const Perfil = () => {
 
       <View>
         <View style={{flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60}}>
-          <Ionicons name='star' size={25} color='#954DFF' />
-          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 5}}>Gêneros favoritos</Text> 
+          <Ionicons name='star' size={25} color='#fff' />
+          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 10}}>Gêneros favoritos</Text> 
         </View>
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
             placeholder='Terror, Suspense, Ação...'
+            selectionColor='#fff'
+            placeholderTextColor="#B6B6B6"
             style={styles.input}
           />
         </View>
@@ -44,13 +48,15 @@ const Perfil = () => {
 
       <View>
         <View style={{flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60}}>
-          <Ionicons name='film' size={25} color='#954DFF' />
-          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 5}}>Filme favorito</Text> 
+          <Ionicons name='film' size={25} color='#fff' />
+          <Text style={{color: '#FCFCFC', fontSize: 25, paddingLeft: 10}}>Filme favorito</Text> 
         </View>
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
             placeholder='It: A coisa'
+            selectionColor='#fff'
+            placeholderTextColor="#B6B6B6"
             style={styles.input}
           />
         </View>
@@ -62,10 +68,11 @@ const Perfil = () => {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#954DFF',
+    backgroundColor: '#26034D',
     height: 40,
     paddingLeft: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    color: "#fff"
   },
 
   image: {
