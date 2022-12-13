@@ -11,7 +11,11 @@ export default function DefaultButton({
 }) {
   return (
     <TouchableOpacity
-      style={[styles.button, { width: width, height: height, marginTop: marginTop, backgroundColor: backgroundColor }]}
+      style={[styles.button, 
+        { width: width, 
+          height: height, 
+          marginTop: marginTop, 
+          backgroundColor: backgroundColor }]}
       activeOpacity={0.7}
       onPress={click}
     >
@@ -28,6 +32,7 @@ const styles = StyleSheet.create({
     borderColor: "#FFFFFF",
     borderRadius: 20,
   },
+  
   buttonText: {
     color: "#FFFFFF",
     fontWeight: "bold",

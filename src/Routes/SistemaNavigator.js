@@ -13,7 +13,7 @@ import EditDrawer from './EditDrawer';
 
 const Drawer = createDrawerNavigator();
 
-function SistemaNavigator() {
+export default function SistemaNavigator() {
     return (
         <Drawer.Navigator drawerContent={(props) => <EditDrawer{...props}/>}
             screenOptions={{
@@ -78,5 +78,3 @@ function SistemaNavigator() {
         </Drawer.Navigator>
     );    
 }
-
-export default SistemaNavigator;
