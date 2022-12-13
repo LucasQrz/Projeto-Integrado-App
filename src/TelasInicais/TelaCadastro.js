@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { Button, TextInput } from 'react-native-paper'
+import { TextInput } from 'react-native-paper'
 import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import {Ionicons} from '@expo/vector-icons';
+import { Ionicons} from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
+import DefaultButton from "../DefaultButton/DefaultButton";
 
-const Cadastro = ({ navigation }) => {
+export default function Cadastro(){
+  const navigation = useNavigation();
   const [input, setInput ] = useState('');
   const [hidePass, setHidepass] = useState(true);
   const [input2, setInput2 ] = useState('');
   const [hidePass2, setHidepass2] = useState(true);
 
+const NavigationSistema = () => {
+  navigation.navigate("TelaLogin");
+};
   return(
   <View style={styles.container}>
     <ImageBackground source={require('../Assets/fundoCadastro.jpg')} 
@@ -77,19 +83,20 @@ const Cadastro = ({ navigation }) => {
         </View>
       </View>
 
-      <View style={{alignItems: 'center'}}> 
-        <Button
-          style={styles.botao}
-          mode='contained'
-          textColor='#000'
-          buttonColor='#B6B6B6'
-          onPress={() => navigation.navigate('TelaLogin')}>
-          Cadastrar
-        </Button>
+      <View style={{alignItems: 'center'}}>
+      <DefaultButton
+        buttonText={'Acessar'}
+        backgroundColor={'#26034D'}
+        marginTop={10}
+        click={NavigationSistema}
+        width={110}
+        height={50}
+      />
       </View>
 
     </ImageBackground>
   </View>
+
 )};
 
 const styles = StyleSheet.create({
@@ -148,11 +155,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#904B9C',
     fontSize: 18
-  },
-  botao: {
-    marginTop: 50,
-    width: 150
   }
 });
-
-export default Cadastro;

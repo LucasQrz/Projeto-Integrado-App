@@ -1,12 +1,19 @@
 import React, { useState} from 'react';
-import { Button, TextInput } from 'react-native-paper'
 import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import {Ionicons  } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper'
+import { Ionicons  } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
+import DefaultButton from "../DefaultButton/DefaultButton";
 
-const Login = ({ navigation }) => {
+export default function Login(){
+  const navigation = useNavigation();
   const [inputs, setInputs] = useState('');
   const [ocultarSenha, setOcultarsenha] = useState(true);
+
+const NavigationLogin = () => {
+  navigation.navigate("SistemaNavigator");
+};
 
 return(
   <View style={styles.container}>
@@ -26,6 +33,7 @@ return(
           textColor="#fff"
           label="Email"
         />
+        
       <View style={styles.campoSenha}>
         <TextInput
           backgroundColor="#000000"
@@ -38,6 +46,7 @@ return(
           style={styles.inputs}
           label="Senha"
         />
+
         <TouchableOpacity style={styles.icone} onPress={ () => setOcultarsenha(!ocultarSenha)}>
          {ocultarSenha ? 
           <Ionicons name="eye" size={25} color='gray'/>
@@ -52,17 +61,17 @@ return(
       </View>
     
     </View>
-
-    <View style={{alignItems: 'center'}}> 
-      <Button
-        style={styles.botao}
-        mode='contained'
-        textColor='#000'
-        buttonColor='#B6B6B6'
-        onPress={() => navigation.navigate('SistemaNavigator')}>
-        Acessar
-      </Button>
-    </View>
+      
+    <View style={{alignItems: 'center'}}>
+    <DefaultButton
+      buttonText={'Acessar'}
+      backgroundColor={'#26034D'}
+      marginTop={10}
+      click={NavigationLogin}
+      width={110}
+      height={50}
+    />
+  </View>
 
   </ImageBackground>
 </View>
@@ -105,11 +114,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#904B9C',
     fontSize: 18
-  },
-  botao: {
-    marginTop: 50,
-    width: 150,
   }
 });
-
-export default Login;
