@@ -21,6 +21,7 @@ function SistemaNavigator() {
             drawerActiveTintColor: '#000000',
             drawerInactiveTintColor: '#FCFCFC',
             drawerLabelStyle: {marginLeft: -25, fontSize: 16}}} >
+
             <Drawer.Screen name="Inicio" component={Inicio} 
             options={{headerStyle: 
             {backgroundColor: '#343434'},
@@ -36,20 +37,23 @@ function SistemaNavigator() {
             )}}
             />
 
-            <Drawer.Screen name="Avaliados" component={Avaliados} 
-            options={{drawerIcon: ({color}) => (
-                <Ionicons name='star-outline' size={22} color={color} />
-            )}}
-            />
-
              <Drawer.Screen name="Lista de Filmes" component={Lista} 
             options={{drawerIcon: ({color}) => (
                 <Ionicons name='list-outline' size={22} color={color} />
             )}}
             />
 
-            <Drawer.Screen name="Perfil" component={Perfil} 
+            <Drawer.Screen name="Avaliados" component={Avaliados} 
             options={{drawerIcon: ({color}) => (
+                <Ionicons name='star-outline' size={22} color={color} />
+            )}}
+            />
+
+            <Drawer.Screen name="Perfil" component={Perfil} 
+            options={{headerStyle: 
+            {backgroundColor: '#343434'},
+            headerTintColor: '#fff',
+            drawerIcon: ({color}) => (
                 <Ionicons name='person-outline' size={22} color={color} />
             )}}
             />
