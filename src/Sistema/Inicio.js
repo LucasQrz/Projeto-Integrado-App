@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { List } from 'react-native-paper';
 
 
