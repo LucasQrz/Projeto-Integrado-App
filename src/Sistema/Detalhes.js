@@ -24,7 +24,7 @@ export default function Detalhes({ route }) {
   }, [id]);
 
   return (
-    <View>
+    <View style={{flex: 1, paddingTop: 40}}>
       {id ? (
         <View>
       

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-import { List } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 
 
 export default function Inicio({ navigation }) {
@@ -26,26 +26,30 @@ export default function Inicio({ navigation }) {
     <View>
       <FlatList
         data={filmes}
+        horizontal={true}
         renderItem={({ item }) => (
-          
-          <List.Item
-            imagem={item.poster_path}
-            title={item.title}
-            description={item.vote_average}
-
-            imagemStyle={styles.poster_path}
-            titleStyle={styles.title}
-            descriptionStyle={styles.vote_average}
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}
-          />
-          
+           
+        <Card onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} style={{width: "100%", height: 100}}/>
+          <Card.Title title={item.title} subtitle={item.vote_average}/>
+        </Card>  
+        
         )}
-     
       />
     </View>
   );
 }
 
+ // <List.Item
+          //   imagem={item.poster_path}
+          //   title={item.title}
+          //   description={item.vote_average}
+
+          //   imagemStyle={styles.poster_path}
+          //   titleStyle={styles.title}
+          //   descriptionStyle={styles.vote_average}
+          //   onPress={() => navigation.navigate('Detalhes', { id: item.id })}
+          // />
 const styles = StyleSheet.create({
 title: {
   fontWeight: 'bold',
