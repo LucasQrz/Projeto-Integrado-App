@@ -10,6 +10,8 @@ import TelaLogin from  './src/TelasInicais/TelaLogin';
 import TelaCadastro from './src/TelasInicais/TelaCadastro';
 import SistemaNavigator from './src/Routes/SistemaNavigator';
 
+import Detalhes from './src/Sistema/Detalhes';
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -52,6 +54,16 @@ export default function App() {
         }}
         name='SistemaNavigator' 
         component={SistemaNavigator}>
+        </Stack.Screen>
+
+        <Stack.Screen 
+        options={{
+          title: '',
+          headerTransparent: true,
+          headerShown: false,
+        }}
+        name='Detalhes' 
+        component={Detalhes}>
         </Stack.Screen>
 
       </Stack.Navigator>
