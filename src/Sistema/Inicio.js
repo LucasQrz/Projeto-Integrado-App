@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import { Card } from 'react-native-paper';
 
 
@@ -23,38 +23,22 @@ export default function Inicio({ navigation }) {
   }, []);
 
   return (
-    <View>
+    <View style={{flex: 1, backgroundColor: '#000000'}}>
+      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
+      <View>
       <FlatList
         data={filmes}
         horizontal={true}
         renderItem={({ item }) => (
            
         <Card onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} style={{width: "100%", height: 100}}/>
-          <Card.Title title={item.title} subtitle={item.vote_average}/>
+          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
+            style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
         </Card>  
         
         )}
       />
+      </View>
     </View>
   );
 }
-
- // <List.Item
-          //   imagem={item.poster_path}
-          //   title={item.title}
-          //   description={item.vote_average}
-
-          //   imagemStyle={styles.poster_path}
-          //   titleStyle={styles.title}
-          //   descriptionStyle={styles.vote_average}
-          //   onPress={() => navigation.navigate('Detalhes', { id: item.id })}
-          // />
-const styles = StyleSheet.create({
-title: {
-  fontWeight: 'bold',
-  color: 'rgb(117, 117, 117)',
-  fontSize: 12,
-}
-    
-});

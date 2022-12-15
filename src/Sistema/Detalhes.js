@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 
 
@@ -24,16 +24,20 @@ export default function Detalhes({ route }) {
   }, [id]);
 
   return (
-    <View style={{flex: 1, paddingTop: 40}}>
+    <View style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
       {id ? (
-        <View>
+        <View style={{alignItems: 'center'}}>
       
-          <Text>Nome: {filme.title}</Text>
-          <Text>Sinopse: {filme.overview}</Text>
-          <Text>Avaliação: {filme.vote_average}</Text>
-          <Text>Lançamento: {filme.release_date}</Text>
-        
+          <Text style={styles.text}>Nome: {filme.title}</Text>
+          <Text style={styles.text}>Avaliação: {filme.vote_average}</Text>
+          
+          <View>
+            <Text style={styles.text}>Sinopse: {filme.overview}</Text>
+            <Text style={styles.text}>Lançamento: {filme.release_date}</Text>
+          </View>
+
         </View>
+
       ) : (
         <View>
           <Text>Cadê o id?</Text>
@@ -42,3 +46,9 @@ export default function Detalhes({ route }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  text:{
+    color: '#fff',
+  }
+})
