@@ -28,16 +28,16 @@ export default function App(){
             buttonText={'Acessar'}
             backgroundColor={'#26034D'}
             click={NavigationLogin}
-            width={110}
+            width={200}
             height={50}
           />
 
           <DefaultButton
-            marginTop={10}
+            marginTop={14}
             backgroundColor={'#26034D'}
             buttonText={'Cadastrar'}
             click={NavigationCadastro}
-            width={110}
+            width={200}
             height={50}
           />
         </View>

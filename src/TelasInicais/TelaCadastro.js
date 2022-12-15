@@ -86,9 +86,9 @@ export default function Cadastro(){
           <DefaultButton
             buttonText={'Acessar'}
             backgroundColor={'#26034D'}
-            marginTop={10}
+            marginTop={14}
             click={NavigationSistema}
-            width={110}
+            width={200}
             height={50}
           />
         </View>
