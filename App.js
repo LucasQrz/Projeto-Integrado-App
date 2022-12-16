@@ -59,9 +59,12 @@ export default function App() {
 
         <Stack.Screen 
         options={{
-          title: '',
-          headerTransparent: true,
-          headerShown: false,
+          title: 'Detalhes',
+          headerStyle: { backgroundColor: '#26034D' },
+          headerTintColor: 'white',
+          headerTransparent: false,
+          headerShown: true,
+          headerTitleAlign:'center'
         }}
         name='Detalhes' 
         component={Detalhes}>
