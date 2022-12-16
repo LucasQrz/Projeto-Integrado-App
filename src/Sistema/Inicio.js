@@ -39,6 +39,38 @@ export default function Inicio({ navigation }) {
         )}
       />
       </View>
+
+      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Em alta</Text>
+      <View>
+      <FlatList
+        data={filmes}
+        horizontal={true}
+        renderItem={({ item }) => (
+           
+        <Card onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
+            style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+        </Card>  
+        
+        )}
+      />
+      </View>
+
+      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Top 10</Text>
+      <View>
+      <FlatList
+        data={filmes}
+        horizontal={true}
+        renderItem={({ item }) => (
+           
+        <Card onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
+            style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+        </Card>  
+        
+        )}
+      />
+      </View>
     </View>
   );
 }

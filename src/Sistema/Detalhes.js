@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-
+import { View, Text, StyleSheet } from 'react-native'; 
 
 export default function Detalhes({ route }) {
   const id = route?.params?.id;
@@ -50,5 +48,6 @@ export default function Detalhes({ route }) {
 const styles = StyleSheet.create({
   text:{
     color: '#fff',
+
   }
 })
