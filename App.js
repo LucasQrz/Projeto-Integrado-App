@@ -11,6 +11,7 @@ import TelaCadastro from './src/TelasInicais/TelaCadastro';
 import SistemaNavigator from './src/Routes/SistemaNavigator';
 
 import Detalhes from './src/Sistema/Detalhes';
+import Playlist from './src/Sistema/Playlist';
 
 export default function App() {
   return (
@@ -64,6 +65,16 @@ export default function App() {
         }}
         name='Detalhes' 
         component={Detalhes}>
+        </Stack.Screen>
+
+        <Stack.Screen 
+        options={{
+          title: 'Playlist',
+          headerTransparent: false,
+          headerShown: true,
+        }}
+        name='Playlist' 
+        component={Playlist}>
         </Stack.Screen>
 
       </Stack.Navigator>
