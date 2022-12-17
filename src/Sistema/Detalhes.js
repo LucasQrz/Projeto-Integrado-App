@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native'; 
+import { View, Text, StyleSheet, Image } from 'react-native'; 
 
 export default function Detalhes({ route }) {
   const id = route?.params?.id;
   const [filme, setFilme] = useState({});
+
 
   const getFilmes = async (filmesId) => {
     try {
@@ -25,9 +26,15 @@ export default function Detalhes({ route }) {
     <View style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
       {id ? (
         <View style={{alignItems: 'center'}}>
-      
+
+<       Image
+        style={styles.logo}
+        data={filme}
+        source={{ uri: 'https://image.tmdb.org/t/p/w200/' }}
+
+        />
           <Text style={styles.text}>Nome: {filme.title}</Text>
-          <Text style={styles.text}>Avaliação: {filme.vote_average}</Text>
+          <Text style={styles.text }>Avaliação: {filme.vote_average}</Text>
           
           <View>
             <Text style={styles.text}>Sinopse: {filme.overview}</Text>
@@ -48,6 +55,11 @@ export default function Detalhes({ route }) {
 const styles = StyleSheet.create({
   text:{
     color: '#fff',
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    paddingRight: 5,
+    paddingLeft:5,
+    marginTop: '5%'
 
   }
 })
