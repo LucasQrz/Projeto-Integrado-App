@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
-import { IconButton } from 'react-native-paper';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -36,27 +35,46 @@ export default function Detalhes({ navigation,route }) {
 
   return (
     <View style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
+      <Ionicons style={{fontSize: 22, color: '#fff', padding: 5}} name='bookmark-outline' size={25} onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}/>
+
       <Image style={{height: 250}}
         resizeMode='contain'
         source={{
           uri: `https://image.tmdb.org/t/p/w200/${filme.poster_path}`,
         }}>
-
       </Image>
 
-      <IconButton style={{fontSize: 22, color: '#fff', padding: 5}} icon='mark' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
       {id ? (
-        <View style={{alignItems: 'center'}}>
 
-          <Text style={styles.text}>Nome: {filme.title}</Text>
-          <Text style={styles.text }>Avaliação: {filme.vote_average}</Text>
+        <View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.text2}>{filme.title}</Text>
+          </View>
+
+          <View style={{flexDirection: 'row', padding: 10, marginTop: 8, justifyContent: 'center'}}>
+
+            <View style={{alignItems: 'center', paddingRight: 25}}>
+              <Ionicons name='calendar-outline' size={25} color='#fff'/>
+              <Text style={{color: '#fff'}}>{filme.release_date}</Text>
+            </View>
+            
+            <View style={{alignItems: 'center', paddingRight: 25}}>
+              <Ionicons name='star-half-outline' size={25} color='#fff'/>
+              <Text style={{color: '#fff'}}>{filme.vote_average}</Text>
+            </View>
+
+            <View style={{alignItems: 'center', paddingRight: 25}}>
+              <Ionicons name='add-circle-outline' size={25} color="#fff"
+                onPress={() => addFilmeToFavoritos(filme)}/>
+              <Text style={{color: '#fff'}}>Minha lista</Text>
+            </View>
+
+          </View>
+
           
-          <Ionicons name='add-circle-outline' size={25} color="#fff"
-          onPress={() => addFilmeToFavoritos(filme)}/>
 
           <View>
-            <Text style={styles.text}>Sinopse: {filme.overview}</Text>
-            <Text style={styles.text}>Lançamento: {filme.release_date}</Text>
+            <Text style={styles.text}>Sinopse: {'\n'}{filme.overview}</Text>
           </View>
 
           {
@@ -78,9 +96,12 @@ const styles = StyleSheet.create({
   text:{
     color: '#fff',
     fontSize: 20,
-    paddingRight: 5,
-    paddingLeft:5,
-    marginTop: '5%'
-
-  }
+    paddingLeft: 5,
+    marginTop: '5%',
+  },
+  text2:{
+    color: '#fff',
+    fontSize: 20,
+    marginTop: '5%',
+  },
 })
