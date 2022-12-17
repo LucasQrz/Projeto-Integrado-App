@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, FlatList, Text, ScrollView } from 'react-native';
-import { Button, Card, IconButton } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
@@ -51,8 +51,6 @@ export default function Inicio({ navigation }) {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#000000'}}>
 
-      <IconButton icon='mark' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
-      <Text style={{color:'white'}}>Favoritos</Text>
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
       <FlatList
@@ -60,9 +58,14 @@ export default function Inicio({ navigation }) {
         horizontal={true}
         renderItem={({ item }) => (
            
-        <Card onPress={() => navigateToDetails(item.id)}>
+        <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+            
+            <View style={{alignItems: 'center', flexDirection: 'column'}}>
+              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+            </View>
         </Card>  
         
         )}
@@ -79,11 +82,11 @@ export default function Inicio({ navigation }) {
         <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
-            <Card.Actions>
-            <Button name='add-circle-outline' size={4} color="#fff" 
-                onPress={() => addFilmeToFavoritos(item)}> Add
-            </Button>
-            </Card.Actions>
+
+             <View style={{alignItems: 'center', flexDirection: 'column'}}>
+              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+            </View>
         </Card>  
         
         )}
@@ -97,9 +100,14 @@ export default function Inicio({ navigation }) {
         horizontal={true}
         renderItem={({ item }) => (
            
-        <Card onPress={() => navigateToDetails(item.id)}>
+        <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+            
+             <View style={{alignItems: 'center', flexDirection: 'column'}}>
+              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+            </View>
         </Card>  
         
         )}
