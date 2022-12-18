@@ -47,8 +47,8 @@ export default function Detalhes({ navigation,route }) {
       {id ? (
 
         <View>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.text2}>{filme.title}</Text>
+          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            <Text style={styles.title}>{filme.title}</Text>
           </View>
 
           <View style={{flexDirection: 'row', padding: 10, marginTop: 8, justifyContent: 'center'}}>
@@ -99,9 +99,10 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     marginTop: '5%',
   },
-  text2:{
+  title:{
     color: '#fff',
     fontSize: 20,
     marginTop: '5%',
+    fontSize: 20
   },
 })
