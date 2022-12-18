@@ -31,7 +31,6 @@ export default function Inicio({ navigation }) {
     }
   }
 
-
   const navigateToDetails = (id) => {
     navigation.navigate('Detalhes', { id, addFilmeToFavoritos, filmesFavoritos })
   }
@@ -53,66 +52,64 @@ export default function Inicio({ navigation }) {
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
-      <FlatList
-        data={filmesLancamentos}
-        horizontal={true}
-        renderItem={({ item }) => (
-           
-        <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
-          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
-            style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
-            
-            <View style={{alignItems: 'center', flexDirection: 'column'}}>
-              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
-              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
-            </View>
-        </Card>  
-        
-        )}
-      />
+        <FlatList
+          data={filmesLancamentos}
+          horizontal={true}
+          renderItem={({ item }) => (
+              
+          <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
+            <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
+              style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+                
+              <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+                <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+              </View>
+          </Card>  
+          )}
+        />
       </View>
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Em alta</Text>
       <View>
-      <FlatList
-        data={filmesEmAlta}
-        horizontal={true}
-        renderItem={({ item }) => (
+        <FlatList
+          data={filmesEmAlta}
+          horizontal={true}
+          renderItem={({ item }) => (
            
         <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
 
-             <View style={{alignItems: 'center', flexDirection: 'column'}}>
+            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
               <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
               <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
             </View>
         </Card>  
-        
         )}
       />
       </View>
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Top 10</Text>
       <View>
-      <FlatList
-        data={filmesTop}
-        horizontal={true}
-        renderItem={({ item }) => (
+        <FlatList
+          data={filmesTop}
+          horizontal={true}
+          renderItem={({ item }) => (
            
         <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
             
-             <View style={{alignItems: 'center', flexDirection: 'column'}}>
+            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
               <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
               <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
             </View>
         </Card>  
-        
         )}
       />
       </View>
+      
     </ScrollView>
   );
 }
