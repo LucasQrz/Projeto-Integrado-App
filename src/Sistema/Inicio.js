@@ -5,7 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 export default function Inicio({ navigation }) {
-  const [filmes, setFilmes] = useState([]);
 
   const [filmesLancamentos, setFilmesLancamentos] = useState([]);
   const [filmesEmAlta, setFilmesEmAlta] = useState([]);
@@ -38,20 +37,21 @@ export default function Inicio({ navigation }) {
 
   useEffect(async () =>  {
     //getFilmes();
+    const filmesLancamento = await getFilmesByTipo('upcoming');
+    setFilmesLancamentos(filmesLancamento);
+
     const filmesPopulares = await getFilmesByTipo('popular');
     setFilmesEmAlta(filmesPopulares);
 
     const filmesTop = await getFilmesByTipo('top_rated');
     setFilmesTop(filmesTop);
 
-    const filmesLancamento = await getFilmesByTipo('upcoming');
-    setFilmesLancamentos(filmesLancamento);
   }, []);
 
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#000000'}}>
 
-      <IconButton icon='mark' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
+      <IconButton icon='arrow-right-drop-circle-outline' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
       <Text style={{color:'white'}}>Favoritos</Text>
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
@@ -79,11 +79,7 @@ export default function Inicio({ navigation }) {
         <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
-            <Card.Actions>
-            <Button name='add-circle-outline' size={4} color="#fff" 
-                onPress={() => addFilmeToFavoritos(item)}> Add
-            </Button>
-            </Card.Actions>
+
         </Card>  
         
         )}

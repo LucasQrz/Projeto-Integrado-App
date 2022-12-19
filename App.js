@@ -73,8 +73,11 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: 'Playlist',
+          headerStyle: { backgroundColor: '#26034D' },
+          headerTintColor: 'white',
           headerTransparent: false,
           headerShown: true,
+          headerTitleAlign:'center'
         }}
         name='Playlist' 
         component={Playlist}>

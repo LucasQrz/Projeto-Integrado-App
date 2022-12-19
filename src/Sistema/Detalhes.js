@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { IconButton } from 'react-native-paper';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -35,7 +36,7 @@ export default function Detalhes({ navigation,route }) {
   }, [id],[filmesFavoritos]);
 
   return (
-    <View style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
+    <ScrollView style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
       <Image style={{height: 250}}
         resizeMode='contain'
         source={{
@@ -44,7 +45,7 @@ export default function Detalhes({ navigation,route }) {
 
       </Image>
 
-      <IconButton style={{fontSize: 22, color: '#fff', padding: 5}} icon='mark' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
+      <IconButton style={{fontSize: 22, color: '#fff', padding: 5}} icon='react-native-gesture-handler' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
       {id ? (
         <View style={{alignItems: 'center'}}>
 
@@ -70,14 +71,14 @@ export default function Detalhes({ navigation,route }) {
           <Text>Cadê o id?</Text>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   text:{
     color: '#fff',
-    fontSize: 20,
+    fontSize: 18,
     paddingRight: 5,
     paddingLeft:5,
     marginTop: '5%'
