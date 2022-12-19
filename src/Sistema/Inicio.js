@@ -50,11 +50,11 @@ export default function Inicio({ navigation }) {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#000000'}}>
 
-<<<<<<< HEAD
+
       <IconButton icon='arrow-right-drop-circle-outline' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
       <Text style={{color:'white'}}>Favoritos</Text>
-=======
->>>>>>> cabc1ce73a3da235a7a640dd2c4597e8ce6f5ef4
+
+
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
         <FlatList
@@ -86,13 +86,11 @@ export default function Inicio({ navigation }) {
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
 
-<<<<<<< HEAD
-=======
             <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
               <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
               <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
             </View>
->>>>>>> cabc1ce73a3da235a7a640dd2c4597e8ce6f5ef4
+
         </Card>  
         )}
       />

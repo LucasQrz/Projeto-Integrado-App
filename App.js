@@ -73,13 +73,9 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: 'Playlist',
-<<<<<<< HEAD
-          headerStyle: { backgroundColor: '#26034D' },
-          headerTintColor: 'white',
-=======
           headerTintColor: 'white',
           headerStyle:{backgroundColor: '#26034D'},
->>>>>>> cabc1ce73a3da235a7a640dd2c4597e8ce6f5ef4
+
           headerTransparent: false,
           headerShown: true,
           headerTitleAlign:'center'
