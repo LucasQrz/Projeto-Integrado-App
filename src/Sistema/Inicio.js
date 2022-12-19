@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, Text, ScrollView } from 'react-native';
-import { Card, IconButton } from 'react-native-paper';
+import { View, FlatList, Text, ScrollView, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { Card } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 export default function Inicio({ navigation }) {
 
@@ -50,10 +49,17 @@ export default function Inicio({ navigation }) {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#000000'}}>
 
+    <ImageBackground source={require('../Assets/fundoPerfil.jpeg')} 
+        resizeMode="cover" style={{justifyContent: 'center'}}>
 
-      <IconButton icon='arrow-right-drop-circle-outline' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
-      <Text style={{color:'white'}}>Favoritos</Text>
-
+      <TouchableOpacity onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
+        <View style={{alignItems: 'center'}}>
+        <Image
+          source={require('../Assets/logo.png')}
+        />
+        </View>
+      </TouchableOpacity>
+    </ImageBackground>
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
@@ -66,10 +72,12 @@ export default function Inicio({ navigation }) {
             <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
               style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
                 
-              <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
-                <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
-                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
-              </View>
+              <TouchableOpacity onPress={() => addFilmeToFavoritos(item, {filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
+                <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+                  <Ionicons name='add-circle-outline' size={35} color='#fff' />
+                  <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+                </View>
+              </TouchableOpacity>
           </Card>  
           )}
         />
@@ -86,11 +94,12 @@ export default function Inicio({ navigation }) {
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
 
-            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
-              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
-              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
-            </View>
-
+            <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
+              <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+                <Ionicons name='add-circle-outline' size={35} color='#fff'/>
+                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+              </View>
+            </TouchableOpacity>
         </Card>  
         )}
       />
@@ -107,10 +116,12 @@ export default function Inicio({ navigation }) {
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
             
-            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
-              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
-              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
-            </View>
+            <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
+              <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+                <Ionicons name='add-circle-outline' size={35} color='#fff'/>
+                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+              </View>
+            </TouchableOpacity>
         </Card>  
         )}
       />
