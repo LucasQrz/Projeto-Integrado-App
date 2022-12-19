@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View, FlatList, Text, ScrollView } from 'react-native';
-import { Button, Card, IconButton } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
@@ -30,7 +30,6 @@ export default function Inicio({ navigation }) {
     }
   }
 
-
   const navigateToDetails = (id) => {
     navigation.navigate('Detalhes', { id, addFilmeToFavoritos, filmesFavoritos })
   }
@@ -51,56 +50,74 @@ export default function Inicio({ navigation }) {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#000000'}}>
 
+<<<<<<< HEAD
       <IconButton icon='arrow-right-drop-circle-outline' onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}></IconButton>
       <Text style={{color:'white'}}>Favoritos</Text>
+=======
+>>>>>>> cabc1ce73a3da235a7a640dd2c4597e8ce6f5ef4
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Lançamentos</Text>
       <View>
-      <FlatList
-        data={filmesLancamentos}
-        horizontal={true}
-        renderItem={({ item }) => (
-           
-        <Card onPress={() => navigateToDetails(item.id)}>
-          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
-            style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
-        </Card>  
-        
-        )}
-      />
+        <FlatList
+          data={filmesLancamentos}
+          horizontal={true}
+          renderItem={({ item }) => (
+              
+          <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
+            <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
+              style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+                
+              <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+                <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+              </View>
+          </Card>  
+          )}
+        />
       </View>
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Em alta</Text>
       <View>
-      <FlatList
-        data={filmesEmAlta}
-        horizontal={true}
-        renderItem={({ item }) => (
+        <FlatList
+          data={filmesEmAlta}
+          horizontal={true}
+          renderItem={({ item }) => (
            
         <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
 
+<<<<<<< HEAD
+=======
+            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+            </View>
+>>>>>>> cabc1ce73a3da235a7a640dd2c4597e8ce6f5ef4
         </Card>  
-        
         )}
       />
       </View>
 
       <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Top 10</Text>
       <View>
-      <FlatList
-        data={filmesTop}
-        horizontal={true}
-        renderItem={({ item }) => (
+        <FlatList
+          data={filmesTop}
+          horizontal={true}
+          renderItem={({ item }) => (
            
-        <Card onPress={() => navigateToDetails(item.id)}>
+        <Card onPress={() => navigateToDetails(item.id)} style={{backgroundColor: '#000000'}}>
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
+            
+            <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
+              <Ionicons name='add-circle-outline' size={25} color='#fff' onPress={() => addFilmeToFavoritos(item)}/>
+              <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+            </View>
         </Card>  
-        
         )}
       />
       </View>
+      
     </ScrollView>
   );
 }

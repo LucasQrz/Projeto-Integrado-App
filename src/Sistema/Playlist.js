@@ -1,5 +1,4 @@
-import { View, Text, FlatList } from 'react-native'
-import React from 'react'
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { Card } from 'react-native-paper';
 
 export default function Playlist({route, navigation}){
@@ -14,18 +13,21 @@ export default function Playlist({route, navigation}){
   }
 
   return (
-     <View style={{flex: 1, backgroundColor: '#000000'}}>
-      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Playlist</Text>
+     <View style={{flex: 1, backgroundColor: '#000000', padding: 10}}>
 
       <FlatList
         data={filmesFavoritos}
         horizontal={false}
         renderItem={({ item }) => (
            
-        <Card onPress={() => navigation.navigate('Detalhes', { id: item.id, addFilmeToFavoritos, filmesFavoritos})}>
-          <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
-            style={{ padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
-        </Card>  
+        <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id, addFilmeToFavoritos, filmesFavoritos})}>
+          <Image style={{height: 400}}
+            resizeMode='contain'
+            source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} />
+        </TouchableOpacity>
+
+        
+        
         
         )}
       />      
