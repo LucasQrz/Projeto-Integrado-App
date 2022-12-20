@@ -20,6 +20,8 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: '',
+          statusBarColor: '#26034D',
+          statusBarStyle: 'light',
           headerTransparent: true,
           headerShown: false,
         }}
@@ -30,6 +32,8 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: '',
+          statusBarColor: '#26034D',
+          statusBarStyle: 'light',
           headerTransparent: true,
           headerShown: false,
         }}
@@ -40,6 +44,8 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: '',
+          statusBarColor: '#26034D',
+          statusBarStyle: 'light',
           headerTransparent: true,
           headerShown: false,
         }}
@@ -50,6 +56,8 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: '',
+          statusBarColor: '#000000',
+          statusBarStyle: 'light',
           headerTransparent: true,
           headerShown: false,
         }}
@@ -64,6 +72,8 @@ export default function App() {
           headerTintColor: 'white',
           headerTransparent: false,
           headerShown: true,
+          statusBarColor: '#26034D',
+          statusBarStyle: 'light',
           headerTitleAlign:'center'
         }}
         name='Detalhes' 
@@ -75,9 +85,10 @@ export default function App() {
           title: 'Playlist',
           headerTintColor: 'white',
           headerStyle:{backgroundColor: '#26034D'},
-
           headerTransparent: false,
           headerShown: true,
+          statusBarColor: '#26034D',
+          statusBarStyle: 'light',
           headerTitleAlign:'center'
         }}
         name='Playlist' 

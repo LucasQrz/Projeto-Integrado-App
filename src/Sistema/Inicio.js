@@ -105,7 +105,7 @@ export default function Inicio({ navigation }) {
       />
       </View>
 
-      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Top 10</Text>
+      <Text style={{fontSize: 22, color: '#fff', padding: 5}}>Tops</Text>
       <View>
         <FlatList
           data={filmesTop}
