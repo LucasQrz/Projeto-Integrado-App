@@ -7,7 +7,7 @@ export default function ListaFilmes({ navigation }) {
   const getFilmes = async () => {
     try {
       const resposta = await fetch(
-        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=1'
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=5'
       );
       const json = await resposta.json();
       setFilmes(json.results);
@@ -30,7 +30,7 @@ export default function ListaFilmes({ navigation }) {
           onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
             <Image style={{height: 250, margin: 10}}
-              resizeMode='contain'
+              resizeMode='cover'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
