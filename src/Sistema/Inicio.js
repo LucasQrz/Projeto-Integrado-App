@@ -52,10 +52,10 @@ export default function Inicio({ navigation }) {
     <ImageBackground source={require('../Assets/fundoPerfil.jpeg')} 
         resizeMode="cover" style={{justifyContent: 'center'}}>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Playlist',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
+      <TouchableOpacity onPress={() => navigation.navigate('Favoritos',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
         <View style={{alignItems: 'center'}}>
         <Image
-          source={require('../Assets/logo.png')}
+          source={require('../Assets/logoInicio.png')}
         />
         </View>
       </TouchableOpacity>
@@ -75,7 +75,7 @@ export default function Inicio({ navigation }) {
               <TouchableOpacity onPress={() => addFilmeToFavoritos(item, {filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
                 <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                   <Ionicons name='add-circle-outline' size={35} color='#fff' />
-                  <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+                  <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
                 </View>
               </TouchableOpacity>
           </Card>  
@@ -97,7 +97,7 @@ export default function Inicio({ navigation }) {
             <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
               <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                 <Ionicons name='add-circle-outline' size={35} color='#fff'/>
-                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+                <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
               </View>
             </TouchableOpacity>
         </Card>  
@@ -119,7 +119,7 @@ export default function Inicio({ navigation }) {
             <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
               <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                 <Ionicons name='add-circle-outline' size={35} color='#fff'/>
-                <Text style={{color: '#fff', fontSize: 12}}>Minha lista</Text>
+                <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
               </View>
             </TouchableOpacity>
         </Card>  

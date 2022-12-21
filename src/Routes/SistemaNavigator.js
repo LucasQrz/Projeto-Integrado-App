@@ -4,7 +4,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Inicio from '../Sistema/Inicio';
-import Avaliados from '../Sistema/Avaliados';
 import Config from '../Sistema/Config';
 import Perfil from '../Sistema/Perfil';
 import Lista from '../Sistema/ListaFilmes';
@@ -23,7 +22,7 @@ export default function SistemaNavigator() {
 
             <Drawer.Screen name="Inicio" component={Inicio} 
                 options={{headerStyle: 
-                {backgroundColor: '#000000'},
+                {backgroundColor: '#000000'}, headerTitle: '' ,
                 headerTintColor: '#fff', headerTitleAlign: 'center',
                 drawerIcon: ({color}) => (
                 <Ionicons name='planet-outline' size={22} color={color} />
@@ -36,15 +35,6 @@ export default function SistemaNavigator() {
                 headerTintColor: '#fff', headerTitleAlign: 'center',
                 drawerIcon: ({color}) => (
                 <Ionicons name='list-outline' size={22} color={color} />
-            )}}
-            />
-
-            <Drawer.Screen name="Avaliados" component={Avaliados} 
-                options={{headerStyle: 
-                {backgroundColor: '#26034D'},
-                headerTintColor: '#fff', headerTitleAlign: 'center',
-                drawerIcon: ({color}) => (
-                <Ionicons name='star-outline' size={22} color={color} />
             )}}
             />
 

@@ -11,7 +11,6 @@ export default function Detalhes({ navigation,route }) {
   const [filme, setFilme] = useState({});
   const [favorito, setFavorito] = useState(false);
 
-
   const getFilmes = async (filmesId) => {
     try {
       const resposta = await fetch(
@@ -24,17 +23,14 @@ export default function Detalhes({ navigation,route }) {
     }
   };
 
-
   useEffect(() => {
     getFilmes(id);
     const favoritoNew = filmesFavoritos?.some(f => f.id == filme.id);
     setFavorito(favoritoNew);
 
-
   }, [id],[filmesFavoritos]);
 
   return (
-
     <View style={{flex: 1, paddingTop: 40, backgroundColor: '#000000'}}>
 
       <Image style={{height: 250}}
@@ -61,7 +57,7 @@ export default function Detalhes({ navigation,route }) {
             <TouchableOpacity onPress={() => addFilmeToFavoritos(filme)}>
               <View style={{alignItems: 'center', paddingRight: 25}}>
                 <Ionicons name='add-circle-outline' size={35} color="#954DFF"/>
-                <Text style={{color: '#954DFF', fontSize: 12}}>Minha lista</Text>
+                <Text style={{color: '#954DFF', fontSize: 12}}>Favoritar</Text>
               </View>
             </TouchableOpacity>
             

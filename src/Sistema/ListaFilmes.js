@@ -19,6 +19,7 @@ export default function ListaFilmes({ navigation }) {
       console.log(error);
     }
   };
+
   const getFilmesPageOne = async () => {
     try {
       const resposta = await fetch(
@@ -30,6 +31,7 @@ export default function ListaFilmes({ navigation }) {
       console.log(error);
     }
   };
+  
   const getFilmesPageTwo = async () => {
     try {
       const resposta = await fetch(
@@ -41,6 +43,7 @@ export default function ListaFilmes({ navigation }) {
       console.log(error);
     }
   };
+
   const getFilmesPageThree = async () => {
     try {
       const resposta = await fetch(
@@ -52,6 +55,7 @@ export default function ListaFilmes({ navigation }) {
       console.log(error);
     }
   };
+
   const getFilmesPageFour = async () => {
     try {
       const resposta = await fetch(
@@ -74,72 +78,76 @@ export default function ListaFilmes({ navigation }) {
 
   return (
     <ScrollView style={{flex : 1, backgroundColor: '#000000', statusBarColor: '#26034D',
-    statusBarStyle: 'light'}}>
+      statusBarStyle: 'light'}}>
       <FlatList
         data={filmes}
         renderItem={({ item }) => (
           
           <TouchableOpacity
-          onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 250, margin: 10}}
-              resizeMode='cover'
+            <Image style={{height: 300, margin: 10}}
+              resizeMode='stretch'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+
       <FlatList
         data={filmesPageOne}
         renderItem={({ item }) => (
           
           <TouchableOpacity
-          onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 250, margin: 10}}
-              resizeMode='cover'
+            <Image style={{height: 300, margin: 10}}
+              resizeMode='stretch'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+
       <FlatList
         data={filmesPageTwo}
         renderItem={({ item }) => (
           
           <TouchableOpacity
-          onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 250, margin: 10}}
-              resizeMode='cover'
+            <Image style={{height: 300, margin: 10}}
+              resizeMode='stretch'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+
       <FlatList
         data={filmesPageThree}
         renderItem={({ item }) => (
           
           <TouchableOpacity
-          onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 250, margin: 10}}
-              resizeMode='cover'
+            <Image style={{height: 300, margin: 10}}
+              resizeMode='stretch'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+
       <FlatList
         data={filmesPageFour}
         renderItem={({ item }) => (
           
           <TouchableOpacity
-          onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 250, margin: 10}}
-              resizeMode='cover'
+            <Image style={{height: 300, margin: 10}}
+              resizeMode='stretch'
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>

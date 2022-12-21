@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { Card } from 'react-native-paper';
 
-export default function Playlist({route, navigation}){
+export default function Favoritos({route, navigation}){
 
   let [filmes, addFilmeToFavoritos, filmesFavoritos] = [[], () => {}, []];
 
@@ -9,7 +9,6 @@ export default function Playlist({route, navigation}){
     filmes = route.params?.filmes ?? [];
     filmesFavoritos = route.params?.filmesFavoritos ?? [];
     addFilmeToFavoritos = route.params?.addFilmeToFavoritos ?? (() => {});
-
   }
 
   return (
@@ -25,10 +24,7 @@ export default function Playlist({route, navigation}){
             resizeMode='contain'
             source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} />
         </TouchableOpacity>
-
-        
-        
-        
+         
         )}
       />      
     </View>

@@ -59,7 +59,6 @@ const Config = () => {
         </View>
         
       </View>
-
     </View>
   )
 }
