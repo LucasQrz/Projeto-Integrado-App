@@ -56,7 +56,7 @@ export default function App() {
         <Stack.Screen 
         options={{
           title: '',
-          statusBarColor: '#000000',
+          statusBarColor: '#26034D',
           statusBarStyle: 'light',
           headerTransparent: true,
           headerShown: false,

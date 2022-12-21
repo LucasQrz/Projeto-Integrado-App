@@ -33,7 +33,7 @@ export default function ListaFilmes({ navigation }) {
   const getFilmesPageTwo = async () => {
     try {
       const resposta = await fetch(
-        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=2'
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=3'
       );
       const json = await resposta.json();
       setFilmesPageTwo(json.results);
@@ -44,7 +44,7 @@ export default function ListaFilmes({ navigation }) {
   const getFilmesPageThree = async () => {
     try {
       const resposta = await fetch(
-        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=3'
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=4'
       );
       const json = await resposta.json();
       setFilmesPageThree(json.results);
@@ -55,7 +55,7 @@ export default function ListaFilmes({ navigation }) {
   const getFilmesPageFour = async () => {
     try {
       const resposta = await fetch(
-        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=4'
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=5'
       );
       const json = await resposta.json();
       setFilmesPageFour(json.results);
