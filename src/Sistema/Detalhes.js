@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -54,7 +54,7 @@ export default function Detalhes({ navigation,route }) {
               <Text style={{color: '#fff'}}>{filme.release_date}</Text>
             </View>
 
-            <TouchableOpacity onPress={() => addFilmeToFavoritos(filme)}>
+            <TouchableOpacity onPress={() => addFilmeToFavoritos(filme,  Alert.alert("Filme favoritado com sucesso!"))}>
               <View style={{alignItems: 'center', paddingRight: 25}}>
                 <Ionicons name='add-circle-outline' size={35} color="#954DFF"/>
                 <Text style={{color: '#954DFF', fontSize: 12}}>Favoritar</Text>

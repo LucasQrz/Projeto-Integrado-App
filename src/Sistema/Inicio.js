@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, FlatList, Text, ScrollView, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, FlatList, Text, ScrollView, TouchableOpacity, ImageBackground, Image, Alert } from 'react-native';
 import { Card } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -72,7 +72,8 @@ export default function Inicio({ navigation }) {
             <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
               style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
                 
-              <TouchableOpacity onPress={() => addFilmeToFavoritos(item, {filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
+              <TouchableOpacity onPress={() => addFilmeToFavoritos(item, {filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos}, 
+                Alert.alert("Filme favoritado com sucesso!"))}>
                 <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                   <Ionicons name='add-circle-outline' size={35} color='#fff' />
                   <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
@@ -94,7 +95,8 @@ export default function Inicio({ navigation }) {
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
 
-            <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
+            <TouchableOpacity onPress={() => addFilmeToFavoritos(item, 
+              Alert.alert("Filme favoritado com sucesso!"))}>
               <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                 <Ionicons name='add-circle-outline' size={35} color='#fff'/>
                 <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
@@ -116,7 +118,8 @@ export default function Inicio({ navigation }) {
           <Card.Cover source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}} 
             style={{width: 125, height: 200, padding: 5, backgroundColor: '#000000', borderRadius: 0}}/>
             
-            <TouchableOpacity onPress={() => addFilmeToFavoritos(item)}>
+            <TouchableOpacity onPress={() => addFilmeToFavoritos(item, 
+              Alert.alert("Filme favoritado com sucesso!"))}>
               <View style={{alignItems: 'center', flexDirection: 'column', marginBottom: 15}}>
                 <Ionicons name='add-circle-outline' size={35} color='#fff'/>
                 <Text style={{color: '#fff', fontSize: 12}}>Favoritar</Text>
