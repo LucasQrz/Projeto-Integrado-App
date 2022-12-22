@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ScrollView, FlatList, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, FlatList, TouchableOpacity, Image, Dimensions, StyleSheet, View } from 'react-native';
+
+const {width} = Dimensions.get('window');
+
 
 export default function ListaFilmes({ navigation }) {
   const [filmes, setFilmes] = useState([]);
@@ -7,6 +10,10 @@ export default function ListaFilmes({ navigation }) {
   const [filmesPageTwo, setFilmesPageTwo] = useState([]);
   const [filmesPageThree, setFilmesPageThree] = useState([]);
   const [filmesPageFour, setFilmesPageFour] = useState([]);
+  const [filmesPageFive, setFilmesPageFive] = useState([]);
+  const [filmesPageSix, setFilmesPageSix] = useState([]);
+  const [filmesPageSeven, setFilmesPageSeven] = useState([]);
+  
 
   const getFilmes = async () => {
     try {
@@ -68,17 +75,57 @@ export default function ListaFilmes({ navigation }) {
     }
   };
 
+  const getFilmesPageFive = async () => {
+    try {
+      const resposta = await fetch(
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=6'
+      );
+      const json = await resposta.json();
+      setFilmesPageFive(json.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getFilmesPageSix = async () => {
+    try {
+      const resposta = await fetch(
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=7'
+      );
+      const json = await resposta.json();
+      setFilmesPageSix(json.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getFilmesPageSeven = async () => {
+    try {
+      const resposta = await fetch(
+        'https://api.themoviedb.org/3/movie/popular?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=8'
+      );
+      const json = await resposta.json();
+      setFilmesPageSeven(json.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getFilmes();
     getFilmesPageOne();
     getFilmesPageTwo();
     getFilmesPageThree();
     getFilmesPageFour();
+    getFilmesPageFive();
+    getFilmesPageSix();
+    getFilmesPageSeven();
   }, []);
 
   return (
-    <ScrollView style={{flex : 1, backgroundColor: '#000000', statusBarColor: '#26034D',
-      statusBarStyle: 'light'}}>
+    <ScrollView style={{
+      flex : 1, 
+      backgroundColor: '#000000'
+    }}>
+      <View style={styles.container}>
       <FlatList
         data={filmes}
         renderItem={({ item }) => (
@@ -86,8 +133,8 @@ export default function ListaFilmes({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 300, margin: 10}}
-              resizeMode='stretch'
+            <Image style={styles.image}
+              
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
@@ -101,14 +148,15 @@ export default function ListaFilmes({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 300, margin: 10}}
-              resizeMode='stretch'
+            <Image style={styles.image}
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+      </View>
 
+      <View style={styles.container}>
       <FlatList
         data={filmesPageTwo}
         renderItem={({ item }) => (
@@ -116,8 +164,7 @@ export default function ListaFilmes({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 300, margin: 10}}
-              resizeMode='stretch'
+            <Image style={styles.image}
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
@@ -131,14 +178,15 @@ export default function ListaFilmes({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 300, margin: 10}}
-              resizeMode='stretch'
+            <Image style={styles.image}
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
-
+      </View>
+      
+    <View style={styles.container}>  
       <FlatList
         data={filmesPageFour}
         renderItem={({ item }) => (
@@ -146,13 +194,70 @@ export default function ListaFilmes({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
             
-            <Image style={{height: 300, margin: 10}}
-              resizeMode='stretch'
+            <Image style={styles.image}
               source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
             />
           </TouchableOpacity>
         )}
       />
+      <FlatList
+        data={filmesPageFive}
+        renderItem={({ item }) => (
+          
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            
+            <Image style={styles.image}
+              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
+            />
+          </TouchableOpacity>
+        )}
+      />
+      </View>
+
+      <View style={styles.container}>  
+      <FlatList
+        data={filmesPageSix}
+        renderItem={({ item }) => (
+          
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            
+            <Image style={styles.image}
+              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
+            />
+          </TouchableOpacity>
+        )}
+      />
+      <FlatList
+        data={filmesPageSeven}
+        renderItem={({ item }) => (
+          
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+            
+            <Image style={styles.image}
+              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
+            />
+          </TouchableOpacity>
+        )}
+      />
+      </View>
     </ScrollView>
   );
 }
+const styles =StyleSheet.create({
+  container:{
+    flexDirection: 'row'
+    
+
+},
+image:{
+  flexWrap: 'wrap',
+  height: 300,
+  margin: 10,
+  justifyContent: 'space-between',
+  width: (width - 45)/2,
+  
+}
+});
