@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
-import { ScrollView, FlatList, TouchableOpacity, Image, Dimensions, StyleSheet, View } from 'react-native';
+import {
+  ScrollView,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+  StyleSheet,
+  View,
+} from 'react-native';
 
-const {width} = Dimensions.get('window');
-
+const { width } = Dimensions.get('window');
 
 export default function ListaFilmes({ navigation }) {
   const [filmes, setFilmes] = useState([]);
@@ -13,7 +20,6 @@ export default function ListaFilmes({ navigation }) {
   const [filmesPageFive, setFilmesPageFive] = useState([]);
   const [filmesPageSix, setFilmesPageSix] = useState([]);
   const [filmesPageSeven, setFilmesPageSeven] = useState([]);
-  
 
   const getFilmes = async () => {
     try {
@@ -38,7 +44,7 @@ export default function ListaFilmes({ navigation }) {
       console.log(error);
     }
   };
-  
+
   const getFilmesPageTwo = async () => {
     try {
       const resposta = await fetch(
@@ -121,143 +127,126 @@ export default function ListaFilmes({ navigation }) {
   }, []);
 
   return (
-    <ScrollView style={{
-      flex : 1, 
-      backgroundColor: '#000000'
-    }}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: '#000000',
+      }}
+    >
       <View style={styles.container}>
-      <FlatList
-        data={filmes}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={filmes}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
 
-      <FlatList
-        data={filmesPageOne}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={filmesPageOne}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
       </View>
 
       <View style={styles.container}>
-      <FlatList
-        data={filmesPageTwo}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={filmesPageTwo}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
 
-      <FlatList
-        data={filmesPageThree}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
-      </View>
-      
-    <View style={styles.container}>  
-      <FlatList
-        data={filmesPageFour}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
-      <FlatList
-        data={filmesPageFive}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={filmesPageThree}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
       </View>
 
-      <View style={styles.container}>  
-      <FlatList
-        data={filmesPageSix}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
-      <FlatList
-        data={filmesPageSeven}
-        renderItem={({ item }) => (
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
-            
-            <Image style={styles.image}
-              source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path}}
-            />
-          </TouchableOpacity>
-        )}
-      />
+      <View style={styles.container}>
+        <FlatList
+          data={filmesPageFour}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
+        <FlatList
+          data={filmesPageFive}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
+      </View>
+
+      <View style={styles.container}>
+        <FlatList
+          data={filmesPageSix}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
+        <FlatList
+          data={filmesPageSeven}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Detalhes', { id: item.id })}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
+              />
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </ScrollView>
   );
 }
-const styles =StyleSheet.create({
-  container:{
-    flexDirection: 'row'
-    
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
 
-},
-image:{
-  flexWrap: 'wrap',
-  height: 300,
-  margin: 10,
-  justifyContent: 'space-between',
-  width: (width - 45)/2,
-  
-}
+  image: {
+    flexWrap: 'wrap',
+    height: 300,
+    margin: 10,
+    justifyContent: 'space-between',
+    width: (width - 45) / 2,
+  },
 });

@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function DefaultButton({
   buttonText,
@@ -11,11 +11,10 @@ export default function DefaultButton({
 }) {
   return (
     <TouchableOpacity
-      style={[styles.button, 
-        { width: width, 
-          height: height, 
-          marginTop: marginTop, 
-          backgroundColor: backgroundColor }]}
+      style={[
+        styles.button,
+        { width: width, height: height, marginTop: marginTop, backgroundColor: backgroundColor },
+      ]}
       activeOpacity={0.7}
       onPress={click}
     >
@@ -26,17 +25,17 @@ export default function DefaultButton({
 
 const styles = StyleSheet.create({
   button: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderWidth: 1,
-    borderColor: "#FFFFFF",
+    borderColor: '#FFFFFF',
     borderRadius: 20,
   },
-  
+
   buttonText: {
-    color: "#FFFFFF",
-    fontWeight: "bold",
+    color: '#FFFFFF',
+    fontWeight: 'bold',
     fontSize: 18,
-    paddingBottom: '2%'
+    paddingBottom: '2%',
   },
 });
