@@ -5,9 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Perfil = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: '#000000' }}>
+    <View style={{ flex: 1, backgroundColor: '#FFF' }}>
       <View style={{ alignItems: 'center', padding: 30 }}>
-        <Image source={require('../Assets/icon.png')} style={styles.image} />
+        <Image source={require('../Assets/promonet-logo.png')} style={styles.image} />
 
         <View style={styles.icon}>
           <Ionicons name="camera-outline" size={35} color="#fff" />
@@ -16,8 +16,8 @@ const Perfil = () => {
 
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60 }}>
-          <Ionicons name="person" size={25} color="#fff" />
-          <Text style={{ color: '#FCFCFC', fontSize: 25, paddingLeft: 10 }}>Usuário</Text>
+          <Ionicons name="person" size={25} color="#903848" />
+          <Text style={{ color: '#903848', fontSize: 25, paddingLeft: 10 }}>Usuário</Text>
         </View>
 
         <View style={{ paddingLeft: 65, width: '90%' }}>
@@ -32,8 +32,8 @@ const Perfil = () => {
 
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60 }}>
-          <Ionicons name="star" size={25} color="#fff" />
-          <Text style={{ color: '#FCFCFC', fontSize: 25, paddingLeft: 10 }}>Gêneros favoritos</Text>
+          <Ionicons name="mail" size={25} color="#903848" />
+          <Text style={{ color: '#903848', fontSize: 25, paddingLeft: 10 }}>Email</Text>
         </View>
 
         <View style={{ paddingLeft: 65, width: '90%' }}>
@@ -48,8 +48,8 @@ const Perfil = () => {
 
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, paddingLeft: 60 }}>
-          <Ionicons name="film" size={25} color="#fff" />
-          <Text style={{ color: '#FCFCFC', fontSize: 25, paddingLeft: 10 }}>Filme favorito</Text>
+          <Ionicons name="film" size={25} color="#903848" />
+          <Text style={{ color: '#903848', fontSize: 25, paddingLeft: 10 }}>Senha</Text>
         </View>
 
         <View style={{ paddingLeft: 65, width: '90%' }}>
@@ -67,7 +67,7 @@ const Perfil = () => {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#26034D',
+    backgroundColor: '#903848',
     height: 40,
     paddingLeft: 10,
     borderRadius: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
   icon: {
     position: 'absolute',
-    backgroundColor: '#000000',
+    backgroundColor: '#903848',
     width: 50,
     height: 50,
     borderRadius: 20,

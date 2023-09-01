@@ -1,115 +1,114 @@
-import React, { useState } from 'react';
-import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import { useNavigation } from '@react-navigation/native';
 
 import DefaultButton from '../DefaultButton/DefaultButton';
 
 export default function Login() {
   const navigation = useNavigation();
-  const [inputs, setInputs] = useState('');
-  const [ocultarSenha, setOcultarsenha] = useState(true);
-
   const NavigationLogin = () => {
     navigation.navigate('SistemaNavigator');
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <ImageBackground
-        source={require('../Assets/fundoLogin.jpg')}
-        resizeMode="cover"
-        style={{ flex: 1, justifyContent: 'center' }}
-      >
-        <View style={{ alignItems: 'center' }}>
-          <Image source={require('../Assets/logo.png')} />
-        </View>
+    <View style={styles.container}>
+      {/* Cabeçalho animado */}
+      <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
+        <Text style={styles.message}>Fazer login</Text>
+      </Animatable.View>
 
-        <View style={styles.back}>
-          <TextInput
-            backgroundColor="#000000"
-            underlineColor="#B6B6B6"
-            activeUnderlineColor="#B6B6B6"
-            style={styles.email}
-            textColor="#fff"
-            label="Email"
-          />
+      {/* Formulário animado */}
+      <Animatable.View animation="fadeInUp" style={styles.containerForm}>
+        {/* Título "Email" */}
+        <Text style={styles.title}>Email</Text>
 
-          <View style={styles.campoSenha}>
-            <TextInput
-              backgroundColor="#000000"
-              secureTextEntry={ocultarSenha}
-              value={inputs}
-              onChangeText={(texto) => setInputs(texto)}
-              underlineColor="#B6B6B6"
-              activeUnderlineColor="#B6B6B6"
-              textColor="#fff"
-              style={styles.inputs}
-              label="Senha"
-            />
+        {/* Campo de entrada de texto para o email */}
+        <TextInput placeholder="Digite seu email" style={styles.input} />
 
-            <TouchableOpacity style={styles.icone} onPress={() => setOcultarsenha(!ocultarSenha)}>
-              {ocultarSenha ? (
-                <Ionicons name="eye" size={25} color="gray" />
-              ) : (
-                <Ionicons name="eye-off" size={25} color="gray" />
-              )}
-            </TouchableOpacity>
-          </View>
+        {/* Título "Senha" */}
+        <Text style={styles.title}>Senha</Text>
 
-          <View style={{ alignSelf: 'flex-end', paddingRight: 10 }}>
-            <Text style={styles.texto}>Esqueceu a senha?</Text>
-          </View>
-        </View>
+        {/* Campo de entrada de texto para a senha */}
+        <TextInput placeholder="Digite sua Senha" style={styles.input} secureTextEntry={true} />
 
+        {/* Botão "Entrar" */}
         <View style={{ alignItems: 'center' }}>
           <DefaultButton
-            buttonText={'Acessar'}
-            backgroundColor={'#26034D'}
+            buttonText={'Login'}
+            backgroundColor={'#903848'}
             marginTop={14}
             click={NavigationLogin}
-            width={200}
+            width={'100%'}
             height={50}
           />
         </View>
-      </ImageBackground>
+
+        {/* Botão "Cadastre-se" */}
+        <TouchableOpacity
+          style={styles.buttonRegister}
+          onPress={() => navigation.navigate('TelaCadastro')}
+        >
+          <Text style={styles.registerText}>Não possui uma conta? Cadastre-se</Text>
+        </TouchableOpacity>
+      </Animatable.View>
     </View>
   );
 }
 
+// Define os estilos
 const styles = StyleSheet.create({
-  campoSenha: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#903848',
+  },
+  containerHeader: {
+    marginTop: '14%',
+    marginBottom: '8%',
+    paddingStart: '5%',
+  },
+  message: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  containerForm: {
+    backgroundColor: '#fff',
+    flex: 1,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    paddingStart: '5%',
+    paddingEnd: '5%',
+  },
+  title: {
+    fontSize: 20,
+    marginTop: 28,
+  },
+  input: {
+    borderBottomWidth: 1,
+    height: 40,
+    marginBottom: 12,
+    fontSize: 16,
+  },
+  button: {
+    backgroundColor: '#903848',
     width: '100%',
-    backgroundColor: '#000000',
-    borderRadius: 5,
-    height: 70,
-    alignItems: 'center',
-  },
-
-  inputs: {
-    width: '85%',
-    height: 50,
-  },
-
-  icone: {
-    width: '15%',
-    height: 50,
+    borderRadius: 4,
+    paddingVertical: 8,
+    marginTop: 14,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
-  back: {
-    backgroundColor: '#000000',
-    borderRadius: 20,
-    margin: 10,
-    padding: 10,
-  },
-
-  texto: {
-    fontSize: 15,
-    color: '#904B9C',
+  buttonText: {
+    color: '#fff',
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  buttonRegister: {
+    marginTop: 14,
+    alignSelf: 'center',
+  },
+  registerText: {
+    color: '#a1a1a1',
   },
 });

@@ -6,27 +6,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const EditDrawer = (props) => {
   return (
-    <View style={{ flex: 1, backgroundColor: '#26034D' }}>
+    <View style={{ flex: 1, backgroundColor: '#903848' }}>
       <DrawerContentScrollView {...props}>
-        <ImageBackground source={require('../Assets/fundoPerfil.jpeg')} style={{ padding: 20 }}>
-          <View style={{ padding: 20 }}>
-            <View>
-              <Image
-                source={require('../Assets/icon.png')}
-                style={{
-                  height: 60,
-                  width: 60,
-                  borderRadius: 40,
-                  marginBottom: 10,
-                  marginRight: 20,
-                }}
-              />
-              <Text style={{ color: '#FCFCFC', fontSize: 18, marginBottom: 5 }}>Lucas</Text>
-            </View>
-          </View>
-        </ImageBackground>
+        <View style={{ alignItems: 'center' }}>
+          <ImageBackground
+            source={require('../Assets/promonet-logo.png')}
+            style={{ height: 200, width: 200 }}
+          ></ImageBackground>
+        </View>
 
-        <View style={{ flex: 1, backgroundColor: '#26034D', paddingTop: 10 }}>
+        <View style={{ flex: 1, backgroundColor: '#903848', paddingTop: 10 }}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>

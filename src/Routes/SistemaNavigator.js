@@ -1,22 +1,32 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Image } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Inicio from '../Sistema/Inicio';
 import Config from '../Sistema/Config';
 import Perfil from '../Sistema/Perfil';
-import Lista from '../Sistema/ListaFilmes';
 import EditDrawer from './EditDrawer';
+import Favoritos from '../Sistema/Favoritos';
 
 const Drawer = createDrawerNavigator();
+
+function LogoTitle() {
+  return (
+    <Image
+      style={{ width: '100%', height: '100%' }}
+      source={require('../Assets/promonet-logo2.png')}
+    />
+  );
+}
 
 export default function SistemaNavigator() {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <EditDrawer {...props} />}
       screenOptions={{
-        drawerActiveBackgroundColor: '#954DFF',
+        drawerActiveBackgroundColor: 'white',
         drawerActiveTintColor: '#000000',
         drawerInactiveTintColor: '#FCFCFC',
         drawerLabelStyle: { marginLeft: -25, fontSize: 16 },
@@ -26,22 +36,23 @@ export default function SistemaNavigator() {
         name="Inicio"
         component={Inicio}
         options={{
-          headerStyle: { backgroundColor: '#000000' },
+          headerStyle: { backgroundColor: '#903848' },
           headerTitle: '',
           headerTintColor: '#fff',
-          headerTitleAlign: 'center',
-          drawerIcon: ({ color }) => <Ionicons name="planet-outline" size={22} color={color} />,
+          headerBackground: (props) => <LogoTitle {...props} />,
+          drawerIcon: ({ color }) => <Ionicons name="home-outline" size={22} color={color} />,
         }}
       />
 
       <Drawer.Screen
-        name="Lista de Filmes"
-        component={Lista}
+        name="Favoritos"
+        component={Favoritos}
         options={{
-          headerStyle: { backgroundColor: '#26034D' },
+          headerStyle: { backgroundColor: '#903848' },
+          headerTitle: '',
           headerTintColor: '#fff',
-          headerTitleAlign: 'center',
-          drawerIcon: ({ color }) => <Ionicons name="list-outline" size={22} color={color} />,
+          headerBackground: (props) => <LogoTitle {...props} />,
+          drawerIcon: ({ color }) => <Ionicons name="heart-outline" size={22} color={color} />,
         }}
       />
 
@@ -49,9 +60,10 @@ export default function SistemaNavigator() {
         name="Perfil"
         component={Perfil}
         options={{
-          headerStyle: { backgroundColor: '#26034D' },
+          headerStyle: { backgroundColor: '#903848' },
+          headerTitle: '',
           headerTintColor: '#fff',
-          headerTitleAlign: 'center',
+          headerBackground: (props) => <LogoTitle {...props} />,
           drawerIcon: ({ color }) => <Ionicons name="person-outline" size={22} color={color} />,
         }}
       />
@@ -60,9 +72,10 @@ export default function SistemaNavigator() {
         name="Configurações"
         component={Config}
         options={{
-          headerStyle: { backgroundColor: '#26034D' },
+          headerStyle: { backgroundColor: '#903848' },
+          headerTitle: '',
           headerTintColor: '#fff',
-          headerTitleAlign: 'center',
+          headerBackground: (props) => <LogoTitle {...props} />,
           drawerIcon: ({ color }) => <Ionicons name="settings-outline" size={22} color={color} />,
         }}
       />

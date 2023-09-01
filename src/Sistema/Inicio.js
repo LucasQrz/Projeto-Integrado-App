@@ -1,182 +1,80 @@
-import { useEffect, useState } from 'react';
-import {
-  View,
-  FlatList,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  ImageBackground,
-  Image,
-  Alert,
-} from 'react-native';
-import { Card } from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, { useState } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Inicio({ navigation }) {
-  const [filmesLancamentos, setFilmesLancamentos] = useState([]);
-  const [filmesEmAlta, setFilmesEmAlta] = useState([]);
-  const [filmesTop, setFilmesTop] = useState([]);
+import Itens from './Itens';
 
-  const [filmesFavoritos, setFilmesFavoritos] = useState([]);
+export default function Main() {
+  const navigation = useNavigation();
 
-  const addFilmeToFavoritos = (filme) => {
-    const newFavoritos = [...filmesFavoritos];
-    newFavoritos.push(filme);
-    setFilmesFavoritos(newFavoritos);
+  // Estado para armazenar o valor da pesquisa
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Estado para armazenar os alertas favoritos
+  const [favoriteAlerts, setFavoriteAlerts] = useState([]);
+
+  // Estado para armazenar o produto selecionado
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Função para atualizar o estado da pesquisa
+  const onChangeSearch = (query) => setSearchQuery(query);
+
+  const addFavoriteAlert = (product) => {
+    // Adiciona um alerta favorito ao estado
+    setFavoriteAlerts([...favoriteAlerts, product]);
   };
 
-  const getFilmesByTipo = async (tipo) => {
-    try {
-      let resposta = await fetch(
-        `https://api.themoviedb.org/3/movie/${tipo}?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR&page=1`
-      );
-      let json = await resposta.json();
-      return json.results;
-    } catch (error) {
-      console.log(error);
-    }
+  const navigateToProductDetails = (product) => {
+    // Define o produto selecionado no estado
+    setSelectedProduct(product);
+
+    // Navega para a tela de detalhes do produto
+    navigation.navigate('Detalhes', { product });
   };
-
-  const navigateToDetails = (id) => {
-    navigation.navigate('Detalhes', { id, addFilmeToFavoritos, filmesFavoritos });
-  };
-
-  useEffect(async () => {
-    //getFilmes();
-    const filmesLancamento = await getFilmesByTipo('upcoming');
-    setFilmesLancamentos(filmesLancamento);
-
-    const filmesPopulares = await getFilmesByTipo('popular');
-    setFilmesEmAlta(filmesPopulares);
-
-    const filmesTop = await getFilmesByTipo('top_rated');
-    setFilmesTop(filmesTop);
-  }, []);
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#000000' }}>
-      <ImageBackground
-        source={require('../Assets/fundoPerfil.jpeg')}
-        resizeMode="cover"
-        style={{ justifyContent: 'center' }}
-      >
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Favoritos', {
-              filmes: filmesFavoritos,
-              addFilmeToFavoritos,
-              filmesFavoritos,
-            })
-          }
-        >
-          <View style={{ alignItems: 'center' }}>
-            <Image source={require('../Assets/logoInicio.png')} />
-          </View>
-        </TouchableOpacity>
-      </ImageBackground>
-
-      <Text style={{ fontSize: 22, color: '#fff', padding: 5 }}>Lançamentos</Text>
-      <View>
-        <FlatList
-          data={filmesLancamentos}
-          horizontal={true}
-          renderItem={({ item }) => (
-            <Card onPress={() => navigateToDetails(item.id)} style={{ backgroundColor: '#000000' }}>
-              <Card.Cover
-                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
-                style={{
-                  width: 125,
-                  height: 200,
-                  padding: 5,
-                  backgroundColor: '#000000',
-                  borderRadius: 0,
-                }}
-              />
-
-              <TouchableOpacity
-                onPress={() =>
-                  addFilmeToFavoritos(
-                    item,
-                    { filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos },
-                    Alert.alert('Filme favoritado com sucesso!')
-                  )
-                }
-              >
-                <View style={{ alignItems: 'center', flexDirection: 'column', marginBottom: 15 }}>
-                  <Ionicons name="add-circle-outline" size={35} color="#fff" />
-                  <Text style={{ color: '#fff', fontSize: 12 }}>Favoritar</Text>
-                </View>
-              </TouchableOpacity>
-            </Card>
-          )}
+    <View style={styles.container}>
+      <View style={styles.box}>
+        <Searchbar
+          style={styles.search}
+          placeholder="Pesquisar produtos"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
         />
       </View>
-
-      <Text style={{ fontSize: 22, color: '#fff', padding: 5 }}>Em alta</Text>
-      <View>
-        <FlatList
-          data={filmesEmAlta}
-          horizontal={true}
-          renderItem={({ item }) => (
-            <Card onPress={() => navigateToDetails(item.id)} style={{ backgroundColor: '#000000' }}>
-              <Card.Cover
-                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
-                style={{
-                  width: 125,
-                  height: 200,
-                  padding: 5,
-                  backgroundColor: '#000000',
-                  borderRadius: 0,
-                }}
-              />
-
-              <TouchableOpacity
-                onPress={() =>
-                  addFilmeToFavoritos(item, Alert.alert('Filme favoritado com sucesso!'))
-                }
-              >
-                <View style={{ alignItems: 'center', flexDirection: 'column', marginBottom: 15 }}>
-                  <Ionicons name="add-circle-outline" size={35} color="#fff" />
-                  <Text style={{ color: '#fff', fontSize: 12 }}>Favoritar</Text>
-                </View>
-              </TouchableOpacity>
-            </Card>
-          )}
+      <ScrollView style={styles.scene}>
+        <Itens
+          onFavoritePress={addFavoriteAlert}
+          onProductPress={navigateToProductDetails}
+          searchQuery={searchQuery}
         />
-      </View>
-
-      <Text style={{ fontSize: 22, color: '#fff', padding: 5 }}>Tops</Text>
-      <View>
-        <FlatList
-          data={filmesTop}
-          horizontal={true}
-          renderItem={({ item }) => (
-            <Card onPress={() => navigateToDetails(item.id)} style={{ backgroundColor: '#000000' }}>
-              <Card.Cover
-                source={{ uri: 'https://image.tmdb.org/t/p/w200/' + item.poster_path }}
-                style={{
-                  width: 125,
-                  height: 200,
-                  padding: 5,
-                  backgroundColor: '#000000',
-                  borderRadius: 0,
-                }}
-              />
-
-              <TouchableOpacity
-                onPress={() =>
-                  addFilmeToFavoritos(item, Alert.alert('Filme favoritado com sucesso!'))
-                }
-              >
-                <View style={{ alignItems: 'center', flexDirection: 'column', marginBottom: 15 }}>
-                  <Ionicons name="add-circle-outline" size={35} color="#fff" />
-                  <Text style={{ color: '#fff', fontSize: 12 }}>Favoritar</Text>
-                </View>
-              </TouchableOpacity>
-            </Card>
-          )}
-        />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
+
+// Define os estilos
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#903848',
+  },
+  search: {
+    height: '60%',
+    width: '90%',
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    marginLeft: '5%',
+    marginRight: '5%',
+    paddingEnd: '5%',
+    padding: 10,
+  },
+  scene: {
+    flex: 1,
+  },
+  box: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});

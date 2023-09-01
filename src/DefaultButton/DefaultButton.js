@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#FFFFFF',
-    borderRadius: 20,
+    borderRadius: 4,
   },
 
   buttonText: {

@@ -1,111 +1,141 @@
-import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import { Button, IconButton, Avatar } from 'react-native-paper';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+export default function ProductDetails({ route }) {
+  // Extrai o objeto product dos parâmetros de rota
+  const { product } = route.params;
 
-export default function Detalhes({ navigation, route }) {
-  const id = route?.params?.id;
+  // Estado para armazenar o valor do comentário *
+  const [comment, setComment] = useState('');
 
-  const { addFilmeToFavoritos, filmesFavoritos } = route.params;
-
-  const [filme, setFilme] = useState({});
-  const [favorito, setFavorito] = useState(false);
-
-  const getFilmes = async (filmesId) => {
-    try {
-      const resposta = await fetch(
-        'https://api.themoviedb.org/3/movie/' +
-          filmesId +
-          '?api_key=3e8dec90feebc5e7d11344d90f9d75fe&language=pt-BR'
-      );
-      const json = await resposta.json();
-      setFilme(json);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleCommentChange = (text) => {
+    // Atualiza o estado do comentário com o texto digitado
+    setComment(text);
   };
 
-  useEffect(
-    () => {
-      getFilmes(id);
-      const favoritoNew = filmesFavoritos?.some((f) => f.id == filme.id);
-      setFavorito(favoritoNew);
-    },
-    [id],
-    [filmesFavoritos]
-  );
+  const submitComment = () => {
+    // Adiciona lógica para enviar o comentário para algum lugar *
+    console.log('Comentário:', comment);
+
+    // Limpa o estado do comentário após o envio *
+    setComment('');
+  };
 
   return (
-    <View style={{ flex: 1, paddingTop: 40, backgroundColor: '#000000' }}>
-      <Image
-        style={{ height: 250 }}
-        resizeMode="contain"
-        source={{
-          uri: `https://image.tmdb.org/t/p/w200/${filme.poster_path}`,
-        }}
-      ></Image>
-
-      {id ? (
-        <View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Text style={styles.title}>{filme.title}</Text>
-          </View>
-
-          <View
-            style={{ flexDirection: 'row', padding: 10, marginTop: 8, justifyContent: 'center' }}
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <View style={styles.containerHeader}>
+          <Text style={styles.title}>{product.title}</Text>
+          <Image source={{ uri: product.image }} style={styles.productImage} resizeMode="contain" />
+          <Text style={styles.price}>R$ {product.price.toFixed(2)}</Text>
+          <Button
+            mode="contained"
+            // onPress={() => console.log('')}
+            style={styles.button}
+            contentStyle={styles.buttonContent}
+            labelStyle={styles.buttonText}
           >
-            <View style={{ alignItems: 'center', paddingRight: 25 }}>
-              <Ionicons name="calendar-outline" size={25} color="#fff" />
-              <Text style={{ color: '#fff' }}>{filme.release_date}</Text>
-            </View>
-
-            <TouchableOpacity
-              onPress={() =>
-                addFilmeToFavoritos(filme, Alert.alert('Filme favoritado com sucesso!'))
-              }
-            >
-              <View style={{ alignItems: 'center', paddingRight: 25 }}>
-                <Ionicons name="add-circle-outline" size={35} color="#954DFF" />
-                <Text style={{ color: '#954DFF', fontSize: 12 }}>Favoritar</Text>
-              </View>
-            </TouchableOpacity>
-
-            <View style={{ alignItems: 'center', paddingRight: 25 }}>
-              <Ionicons name="star-half-outline" size={25} color="#fff" />
-              <Text style={{ color: '#fff' }}>{filme.vote_average}</Text>
-            </View>
-          </View>
-
-          <View>
-            <Text style={styles.sinopse}>
-              Sinopse: {'\n'}
-              {filme.overview}
-            </Text>
-          </View>
-
-          {favorito && <Text>Sou favorito!</Text>}
+            Pegar promoção
+          </Button>
+          <Text style={styles.description}>{product.description}</Text>
         </View>
-      ) : (
-        <View>
-          <Text>Cadê o id?</Text>
-        </View>
-      )}
+      </ScrollView>
+
+      <View style={styles.commentContainer}>
+        <Avatar.Text size={50} label="DM" style={styles.commentAvatar} />
+        <TextInput
+          style={styles.commentInput}
+          placeholder="Deixe seu comentário!"
+          value={comment}
+          onChangeText={handleCommentChange}
+        />
+        <IconButton
+          icon="send"
+          onPress={submitComment}
+          style={styles.commentButton}
+          iconColor="#fff"
+          size={30}
+        />
+      </View>
     </View>
   );
 }
 
+// Define os estilos
 const styles = StyleSheet.create({
-  sinopse: {
-    color: '#fff',
-    fontSize: 16,
-    paddingRight: 5,
-    paddingLeft: 5,
-    marginTop: '5%',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  scrollViewContent: {
+    flexGrow: 1,
+    paddingBottom: 100,
+  },
+  containerHeader: {
+    padding: 16,
+  },
+  productImage: {
+    width: '100%',
+    height: 200,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#ddd',
   },
   title: {
-    color: '#fff',
     fontSize: 20,
-    marginTop: '5%',
-    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 18,
+  },
+  price: {
+    color: '#903848',
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  button: {
+    backgroundColor: '#903848',
+    borderRadius: 4,
+    marginTop: 4,
+    marginBottom: 14,
+  },
+  buttonContent: {
+    paddingVertical: 8,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 16,
+  },
+  commentContainer: {
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#903848',
+  },
+  commentAvatar: {
+    backgroundColor: '#fff',
+    margin: 7,
+    marginRight: 15,
+  },
+  commentInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 8,
+  },
+  commentButton: {
+    marginLeft: 8,
+    backgroundColor: '#903848',
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
