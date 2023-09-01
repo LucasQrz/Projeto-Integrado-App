@@ -4,11 +4,11 @@ import { Image } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Inicio from '../Sistema/Inicio';
-import Config from '../Sistema/Config';
-import Perfil from '../Sistema/Perfil';
 import EditDrawer from './EditDrawer';
-import Favoritos from '../Sistema/Favoritos';
+import Home from '../System/Home';
+import Favorites from '../System/Favorites';
+import Profile from '../System/Profile';
+import Settings from '../System/Settings';
 
 const Drawer = createDrawerNavigator();
 
@@ -33,8 +33,8 @@ export default function SistemaNavigator() {
       }}
     >
       <Drawer.Screen
-        name="Inicio"
-        component={Inicio}
+        name="Início"
+        component={Home}
         options={{
           headerStyle: { backgroundColor: '#903848' },
           headerTitle: '',
@@ -46,7 +46,7 @@ export default function SistemaNavigator() {
 
       <Drawer.Screen
         name="Favoritos"
-        component={Favoritos}
+        component={Favorites}
         options={{
           headerStyle: { backgroundColor: '#903848' },
           headerTitle: '',
@@ -58,7 +58,7 @@ export default function SistemaNavigator() {
 
       <Drawer.Screen
         name="Perfil"
-        component={Perfil}
+        component={Profile}
         options={{
           headerStyle: { backgroundColor: '#903848' },
           headerTitle: '',
@@ -70,7 +70,7 @@ export default function SistemaNavigator() {
 
       <Drawer.Screen
         name="Configurações"
-        component={Config}
+        component={Settings}
         options={{
           headerStyle: { backgroundColor: '#903848' },
           headerTitle: '',

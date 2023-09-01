@@ -3,7 +3,7 @@ import React from 'react';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Config = () => {
+const Settings = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#000000' }}>
       <View style={{ flex: 9 }}>
@@ -70,4 +70,4 @@ const Config = () => {
   );
 };
 
-export default Config;
+export default Settings;

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import DefaultButton from '../DefaultButton/DefaultButton';
 
-export default function Register() {
+export default function RegisterScreen() {
   const navigation = useNavigation();
   const [inputs, setInputs] = useState('');
   const [ocultarSenha, setOcultarsenha] = useState(true);
@@ -48,7 +48,7 @@ export default function Register() {
         {/* Botão para redirecionar ao login */}
         <TouchableOpacity
           style={styles.buttonLogin}
-          onPress={() => navigation.navigate('TelaLogin')}
+          onPress={() => navigation.navigate('LoginScreen')}
         >
           <Text style={styles.registerText}>Já possui uma conta? Faça login</Text>
         </TouchableOpacity>

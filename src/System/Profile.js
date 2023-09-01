@@ -3,7 +3,7 @@ import React from 'react';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Perfil = () => {
+const Profile = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#FFF' }}>
       <View style={{ alignItems: 'center', padding: 30 }}>
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Perfil;
+export default Profile;

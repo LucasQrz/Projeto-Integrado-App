@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { Button, IconButton, Avatar } from 'react-native-paper';
 
-export default function ProductDetails({ route }) {
+export default function Details({ route }) {
   // Extrai o objeto product dos parâmetros de rota
   const { product } = route.params;
 

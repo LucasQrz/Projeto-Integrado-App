@@ -4,12 +4,14 @@ import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import TelaInicial from './src/TelasInicais/TelaInicial';
-import TelaLogin from './src/TelasInicais/TelaLogin';
-import TelaCadastro from './src/TelasInicais/TelaCadastro';
+import HomeScreen from './src/Screens/HomeScreen';
+import LoginScreen from './src/Screens/LoginScreen';
+import RegisterScreen from './src/Screens/RegisterScreen';
+
 import SistemaNavigator from './src/Routes/SistemaNavigator';
-import Detalhes from './src/Sistema/Detalhes';
-import Favoritos from './src/Sistema/Favoritos';
+
+import Details from './src/System/Details';
+import Favorites from './src/System/Favorites';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,8 +37,8 @@ export default function App() {
             headerShown: false,
             headerBackground: (props) => <LogoTitle {...props} />,
           }}
-          name="TelaInicial"
-          component={TelaInicial}
+          name="HomeScreen"
+          component={HomeScreen}
         />
 
         <Stack.Screen
@@ -49,8 +51,8 @@ export default function App() {
             headerShown: true,
             headerBackground: (props) => <LogoTitle {...props} />,
           }}
-          name="TelaLogin"
-          component={TelaLogin}
+          name="LoginScreen"
+          component={LoginScreen}
         />
 
         <Stack.Screen
@@ -63,8 +65,8 @@ export default function App() {
             headerShown: true,
             headerBackground: (props) => <LogoTitle {...props} />,
           }}
-          name="TelaCadastro"
-          component={TelaCadastro}
+          name="RegisterScreen"
+          component={RegisterScreen}
         />
 
         <Stack.Screen
@@ -90,8 +92,8 @@ export default function App() {
             headerTitleAlign: 'center',
             headerBackground: (props) => <LogoTitle {...props} />,
           }}
-          name="Detalhes"
-          component={Detalhes}
+          name="Details"
+          component={Details}
         />
 
         <Stack.Screen
@@ -105,8 +107,8 @@ export default function App() {
             headerTitleAlign: 'center',
             headerBackground: (props) => <LogoTitle {...props} />,
           }}
-          name="Favoritos"
-          component={Favoritos}
+          name="Favorites"
+          component={Favorites}
         />
       </Stack.Navigator>
     </NavigationContainer>

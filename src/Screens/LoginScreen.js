@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import DefaultButton from '../DefaultButton/DefaultButton';
 
-export default function Login() {
+export default function LoginScreen() {
   const navigation = useNavigation();
   const NavigationLogin = () => {
     navigation.navigate('SistemaNavigator');
@@ -47,7 +47,7 @@ export default function Login() {
         {/* Botão "Cadastre-se" */}
         <TouchableOpacity
           style={styles.buttonRegister}
-          onPress={() => navigation.navigate('TelaCadastro')}
+          onPress={() => navigation.navigate('RegisterScreen')}
         >
           <Text style={styles.registerText}>Não possui uma conta? Cadastre-se</Text>
         </TouchableOpacity>

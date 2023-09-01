@@ -3,9 +3,9 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
-import Itens from './Itens';
+import Items from './Items';
 
-export default function Main() {
+export default function Home() {
   const navigation = useNavigation();
 
   // Estado para armazenar o valor da pesquisa
@@ -30,7 +30,7 @@ export default function Main() {
     setSelectedProduct(product);
 
     // Navega para a tela de detalhes do produto
-    navigation.navigate('Detalhes', { product });
+    navigation.navigate('Details', { product });
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Main() {
         />
       </View>
       <ScrollView style={styles.scene}>
-        <Itens
+        <Items
           onFavoritePress={addFavoriteAlert}
           onProductPress={navigateToProductDetails}
           searchQuery={searchQuery}

@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react
 import { IconButton } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Alert({ favoriteAlerts, removeFavoriteAlert }) {
+export default function Favorites({ favoriteAlerts, removeFavoriteAlert }) {
   // Função para renderizar cada produto favorito na lista
   const renderAlert = ({ item }) => (
     <TouchableOpacity onPress={() => navigateToProductDetails(item)}>
@@ -28,7 +28,7 @@ export default function Alert({ favoriteAlerts, removeFavoriteAlert }) {
   const navigation = useNavigation();
   // Função para navegar para os detalhes do produto
   const navigateToProductDetails = (product) => {
-    navigation.navigate('Detalhes', { product });
+    navigation.navigate('Details', { product });
   };
 
   return (

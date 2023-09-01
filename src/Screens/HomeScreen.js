@@ -2,7 +2,7 @@ import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-export default function Welcome() {
+export default function HomeScreen() {
   const navigation = useNavigation();
 
   return (
@@ -22,7 +22,7 @@ export default function Welcome() {
         {/* Botão "Login" */}
         <TouchableOpacity
           style={styles.buttonLogin}
-          onPress={() => navigation.navigate('TelaLogin')}
+          onPress={() => navigation.navigate('LoginScreen')}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
@@ -30,7 +30,7 @@ export default function Welcome() {
         {/* Botão "Cadastrar" */}
         <TouchableOpacity
           style={styles.buttonRegister}
-          onPress={() => navigation.navigate('TelaCadastro')}
+          onPress={() => navigation.navigate('RegisterScreen')}
         >
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>

@@ -14,7 +14,7 @@ import { IconButton } from 'react-native-paper';
 
 const API_URL = 'https://fakestoreapi.com/products';
 
-export default function ProductsComponent({ onFavoritePress, onProductPress, searchQuery }) {
+export default function Items({ onFavoritePress, onProductPress, searchQuery }) {
   // Estado para controlar o carregamento dos produtos
   const [isLoading, setIsLoading] = useState(true);
 

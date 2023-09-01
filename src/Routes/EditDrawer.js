@@ -21,20 +21,6 @@ const EditDrawer = (props) => {
       </DrawerContentScrollView>
 
       <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: '#fff' }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: 15 }}>
-          <Ionicons
-            name="logo-twitter"
-            size={25}
-            color={'#FCFCFC'}
-            onPress={() => {
-              props.navigation.navigate;
-            }}
-          />
-          <Ionicons name="logo-facebook" size={25} color={'#FCFCFC'} />
-          <Ionicons name="logo-instagram" size={25} color={'#FCFCFC'} />
-          <Ionicons name="logo-github" size={25} color={'#FCFCFC'} />
-        </View>
-
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate;
@@ -61,7 +47,7 @@ const EditDrawer = (props) => {
 
         <TouchableOpacity
           onPress={() => {
-            props.navigation.navigate('TelaLogin');
+            props.navigation.navigate('LoginScreen');
           }}
           style={{ paddingVertical: 15 }}
         >
