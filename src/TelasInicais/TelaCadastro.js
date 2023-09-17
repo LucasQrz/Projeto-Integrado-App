@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { TextInput } from 'react-native-paper'
+import config from "../config/config.json";
+import { TextInput } from 'react-native-paper';
 import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Ionicons} from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
@@ -8,7 +9,7 @@ import DefaultButton from "../DefaultButton/DefaultButton";
 
 export default function Cadastro(){
   const navigation = useNavigation();
-  const [input, setInput ] = useState('');//aqui fica o valor que o setInput e o nome que e input então fica assim 'input = setInput'
+  const [input, setInput ] = useState(''); //aqui fica o valor que o setInput e o nome que e input então fica assim 'input = setInput'
   const [hidePass, setHidepass] = useState(true);
   const [input2, setInput2 ] = useState('');//aqui fica o valor que o setInput2 e o nome que e input2 então fica assim 'input2 = setInput2'
   const [hidePass2, setHidepass2] = useState(true);
@@ -16,10 +17,22 @@ export default function Cadastro(){
   const NavigationSistema = () => {
     navigation.navigate("TelaLogin");
   };
+  //Envia os dados do formulario para o banco 
   async function registerUser()
 
   {
-    let reqs = await fetch(config.urlRootNode+'create')
+    let reqs = await fetch(config.urlRootNode+'create',{
+    method:'Post',
+    headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+        emailUser: input,
+        senhaUser: input2
+    })
+
+    })
   }
   
   return(
@@ -38,7 +51,7 @@ export default function Cadastro(){
               backgroundColor="#000000"
               underlineColor="#B6B6B6"
               activeUnderlineColor="#B6B6B6"
-              onChangeText={setInput}
+              onChangeText={ (texto) => setInput(texto)}
               Value={input}
               textColor="#fff"
               label="Email"
@@ -53,7 +66,7 @@ export default function Cadastro(){
                 secureTextEntry={hidePass}
                 style={styles.input}
                 value={input}
-                onChangeText={ (texto) => setInput(texto)}
+                onChangeText={ (texto) => setInput2(texto)}
                 label="Senha" 
               />
             {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto   */}
@@ -96,14 +109,13 @@ export default function Cadastro(){
         {/* Aqui e o botão cadastrar */}
         {/* aqui tem duas opções para fazer mudar a função DefaultButton ou colocar */}
         <View style={{alignItems: 'center'}}>
-          <DefaultButton
-            buttonText={'Acessar'}
-            backgroundColor={'#26034D'}
-            marginTop={14}
-            click={NavigationSistema}
-            width={200}
-            height={50}
-          />
+          
+          <TouchableOpacity backgroundColor={'#26034D'} marginTop={14} width={200} height={50} onPress={ registerUser}>
+             <Text>Cadastro</Text>
+            </TouchableOpacity>
+            
+            
+          
         </View>
 
       </ImageBackground>
