@@ -2,79 +2,77 @@ import React, { useState } from "react";
 import config from "../config/config.json";
 import { TextInput } from 'react-native-paper';
 import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
 import DefaultButton from "../DefaultButton/DefaultButton";
 
-export default function Cadastro(){
+export default function Cadastro() {
   const navigation = useNavigation();
-  const [input, setInput ] = useState(''); //aqui fica o valor que o setInput e o nome que e input então fica assim 'input = setInput'
+  const [input, setInput] = useState(null); //aqui fica o valor que o setInput e o nome que e input então fica assim 'input = setInput'
   const [hidePass, setHidepass] = useState(true);
-  const [input2, setInput2 ] = useState('');//aqui fica o valor que o setInput2 e o nome que e input2 então fica assim 'input2 = setInput2'
+  const [input2, setInput2] = useState(null);//aqui fica o valor que o setInput2 e o nome que e input2 então fica assim 'input2 = setInput2'
   const [hidePass2, setHidepass2] = useState(true);
 
   const NavigationSistema = () => {
     navigation.navigate("TelaLogin");
   };
   //Envia os dados do formulario para o banco 
-  async function registerUser()
-
-  {
-    let reqs = await fetch(config.urlRootNode+'create',{
-    method:'Post',
-    headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json'
-    },
-    body: JSON.stringify({
+  async function registerUser() {
+    let reqs = await fetch(config.urlRootNode + 'create', {
+      method: 'Post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         emailUser: input,
         senhaUser: input2
-    })
+      })
 
     })
   }
-  
-  return(
-    // Esse view vai ser a logo
-    <View style={{flex: 1}}>
-      <ImageBackground source={require('../Assets/fundoCadastro.jpg')} 
-        resizeMode="cover" style={{flex: 1, justifyContent: 'center'}}>
-          
-          <View style={{alignItems: 'center'}}>
-            <Image source={require('../Assets/logo.png')} />
-          </View>
 
-          {/* Esse view e a barra do email */}
-          <View style={styles.container}>
+  return (
+    // Esse view vai ser a logo
+    <View style={{ flex: 1 }}>
+      <ImageBackground source={require('../Assets/fundoCadastro.jpg')}
+        resizeMode="cover" style={{ flex: 1, justifyContent: 'center' }}>
+
+        <View style={{ alignItems: 'center' }}>
+          <Image source={require('../Assets/logo.png')} />
+        </View>
+
+        {/* Esse view e a barra do email */}
+        <View style={styles.container}>
+          <TextInput
+            backgroundColor="#000000"
+            underlineColor="#B6B6B6"
+            activeUnderlineColor="#B6B6B6"
+            onChangeText={(texto) => setInput(texto)}
+            Value={input}
+            textColor="#fff"
+            label="Email"
+          />
+          {/* Esse view e a barra da senha */}
+          <View style={styles.senha}>
             <TextInput
               backgroundColor="#000000"
               underlineColor="#B6B6B6"
               activeUnderlineColor="#B6B6B6"
-              onChangeText={ (texto) => setInput(texto)}
-              Value={input}
               textColor="#fff"
-              label="Email"
+              secureTextEntry={hidePass}
+              style={styles.input}
+              value={input}
+              onChangeText={(texto) => setInput2(texto)}
+              label="Senha"
             />
-            {/* Esse view e a barra da senha */}
-            <View style={styles.senha}>
-              <TextInput 
-                backgroundColor="#000000"
-                underlineColor="#B6B6B6"
-                activeUnderlineColor="#B6B6B6"
-                textColor="#fff"
-                secureTextEntry={hidePass}
-                style={styles.input}
-                value={input}
-                onChangeText={ (texto) => setInput2(texto)}
-                label="Senha" 
-              />
             {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto   */}
-            <TouchableOpacity style={styles.icon} onPress={ () => setHidepass(!hidePass)}>
-              {hidePass ? 
-              <Ionicons name="eye" size={25} color='gray'/>
-              :
-              <Ionicons name="eye-off" size={25} color='gray'/>
+            <TouchableOpacity style={styles.icon} onPress={() => setHidepass(!hidePass)}>
+              {hidePass ?
+                <Ionicons name="eye" size={25} color='gray' />
+                :
+                <Ionicons name="eye-off" size={25} color='gray' />
               }
             </TouchableOpacity>
           </View>
@@ -84,7 +82,7 @@ export default function Cadastro(){
             <TextInput
               secureTextEntry={hidePass2}
               value={input2}
-              onChangeText={ (texto) => setInput2(texto)}
+              onChangeText={(texto) => setInput2(texto)}
               backgroundColor="#000000"
               underlineColor="#B6B6B6"
               activeUnderlineColor="#B6B6B6"
@@ -92,30 +90,28 @@ export default function Cadastro(){
               style={styles.input}
               label="Confirmar senha"
             />
-             {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto */}
-            <TouchableOpacity style={styles.icon} onPress={ () => setHidepass2(!hidePass2)}>
-              {hidePass2 ? 
-              <Ionicons name="eye" size={25} color='gray'/>
-              :
-              <Ionicons name="eye-off" size={25} color='gray'/>
-              }   
+            {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto */}
+            <TouchableOpacity style={styles.icon} onPress={() => setHidepass2(!hidePass2)}>
+              {hidePass2 ?
+                <Ionicons name="eye" size={25} color='gray' />
+                :
+                <Ionicons name="eye-off" size={25} color='gray' />
+              }
             </TouchableOpacity>
           </View>
           {/* vai ficar o nome "Já tem uma conta?" */}
-          <View style={{alignSelf: 'flex-end', paddingRight: 10}}>
+          <View style={{ alignSelf: 'flex-end', paddingRight: 10 }}>
             <Text style={styles.texto}>Já tem uma conta?</Text>
           </View>
         </View>
         {/* Aqui e o botão cadastrar */}
         {/* aqui tem duas opções para fazer mudar a função DefaultButton ou colocar */}
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
+
           
-          <TouchableOpacity backgroundColor={'#26034D'} marginTop={14} width={200} height={50} onPress={ registerUser}>
-             <Text>Cadastro</Text>
-            </TouchableOpacity>
-            
-            
-          
+
+
+
         </View>
 
       </ImageBackground>
@@ -128,21 +124,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: '100%',
     borderRadius: 5,
-    height:70,
-    alignItems:'center'
+    height: 70,
+    alignItems: 'center'
   },
 
-  input:{
+  input: {
     width: '85%',
     height: 50,
     pedding: 8
   },
 
-  icon:{
+  icon: {
     width: '15%',
     height: 50,
     justifyContent: 'center',
-    alignItems:'center'
+    alignItems: 'center'
   },
 
   container: {
