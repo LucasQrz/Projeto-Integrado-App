@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import config from "../config/config.json";
+import config from "../../config/config.json";
 import { TextInput } from 'react-native-paper';
 import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -45,6 +45,7 @@ export default function Cadastro() {
 
         {/* Esse view e a barra do email */}
         <View style={styles.container}>
+        
           <TextInput
             backgroundColor="#000000"
             underlineColor="#B6B6B6"
@@ -63,7 +64,7 @@ export default function Cadastro() {
               textColor="#fff"
               secureTextEntry={hidePass}
               style={styles.input}
-              value={input}
+              value={input2}
               onChangeText={(texto) => setInput2(texto)}
               label="Senha"
             />
@@ -101,14 +102,21 @@ export default function Cadastro() {
           </View>
           {/* vai ficar o nome "Já tem uma conta?" */}
           <View style={{ alignSelf: 'flex-end', paddingRight: 10 }}>
-            <Text style={styles.texto}>Já tem uma conta?</Text>
+            <Text style={styles.texto}>Já tem uma conta? </Text>
           </View>
         </View>
         {/* Aqui e o botão cadastrar */}
         {/* aqui tem duas opções para fazer mudar a função DefaultButton ou colocar */}
         <View style={{ alignItems: 'center' }}>
 
-          
+          <TouchableOpacity  style={[styles.button, 
+        { width: width, 
+          height: height, 
+          marginTop: marginTop, 
+          backgroundColor: backgroundColor }]}
+      activeOpacity={0.7} onPress={registerUser}>
+                <Text>Enviar</Text>
+          </TouchableOpacity>
 
 
 
