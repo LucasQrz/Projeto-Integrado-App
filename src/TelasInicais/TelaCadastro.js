@@ -18,12 +18,13 @@ export default function Cadastro() {
     navigation.navigate("TelaLogin");
   };
   //Envia os dados do formulario para o banco 
-  async function registerUser() {
+  async function registerUser() 
+  {
     let reqs = await fetch(config.urlRootNode + 'create', {
-      method: 'Post',
+      method: 'POST',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Accept':'application/json',
+        'Content-Type':'application/json'
       },
       body: JSON.stringify({
         emailUser: input,
@@ -78,48 +79,23 @@ export default function Cadastro() {
             </TouchableOpacity>
           </View>
           {/* Esse view e a barra da CORFIRMAR SENHA */}
-          <View style={styles.senha}>
-            {/* Aqui vou ter que trabalhar para comparar com a senha se não estiver igual a senha nao vai poder ir. */}
-            <TextInput
-              secureTextEntry={hidePass2}
-              value={input2}
-              onChangeText={(texto) => setInput2(texto)}
-              backgroundColor="#000000"
-              underlineColor="#B6B6B6"
-              activeUnderlineColor="#B6B6B6"
-              textColor="#fff"
-              style={styles.input}
-              label="Confirmar senha"
-            />
-            {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto */}
-            <TouchableOpacity style={styles.icon} onPress={() => setHidepass2(!hidePass2)}>
-              {hidePass2 ?
-                <Ionicons name="eye" size={25} color='gray' />
-                :
-                <Ionicons name="eye-off" size={25} color='gray' />
-              }
-            </TouchableOpacity>
-          </View>
+          
           {/* vai ficar o nome "Já tem uma conta?" */}
           <View style={{ alignSelf: 'flex-end', paddingRight: 10 }}>
-            <Text style={styles.texto}>Já tem uma conta? </Text>
+            <Text style={styles.texto}>Já tem uma conta?{input}-{input2} </Text>
           </View>
         </View>
         {/* Aqui e o botão cadastrar */}
         {/* aqui tem duas opções para fazer mudar a função DefaultButton ou colocar */}
         <View style={{ alignItems: 'center' }}>
-
-          <TouchableOpacity  style={[styles.button, 
-        { width: width, 
-          height: height, 
-          marginTop: marginTop, 
-          backgroundColor: backgroundColor }]}
-      activeOpacity={0.7} onPress={registerUser}>
-                <Text>Enviar</Text>
-          </TouchableOpacity>
-
-
-
+          <DefaultButton
+            buttonText={'Cadastrar'}
+            backgroundColor={'#903848'}
+            marginTop={14}
+            click={registerUser}
+            width={'100%'}
+            height={50}
+          />
         </View>
 
       </ImageBackground>
@@ -134,6 +110,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 70,
     alignItems: 'center'
+  },
+
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#FFFFFF",
+    borderRadius: 20,
   },
 
   input: {

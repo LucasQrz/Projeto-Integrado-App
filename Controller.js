@@ -12,7 +12,7 @@ app.use(bodyParser.json);
 //Routes
 app.post('/create', async(req,res)=>{
         console.log(req.body.emailUser);
-        console.log(req.body.senhaUser)
+        
 })
 
 
