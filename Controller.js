@@ -1,19 +1,22 @@
 const express=require('express');
 const bodyParser=require('body-parser');
-
 const cors=require('cors');
+const model=require('models');
 
 
 let app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json);
+app.use(express.json());
 
 //Routes
 app.post('/create', async(req,res)=>{
-        console.log(req.body.emailUser);
+        let reqs = await model.User.create({
+           'email' : req.body.emailUser,
+           'senha' : req.body.emailUser
+        });
         
-})
+});
 
 
 //Start server
