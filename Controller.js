@@ -12,11 +12,42 @@ app.use(express.json());
 
 //Routes
 app.post('/create', async(req,res)=>{
+
+    try{
         let reqs = await UserModel.create({
-           'email' : req.body.emailUser,
-           'senha' : req.body.emailUser
-        })
+            'email' : req.body.emailUser,
+            'senha' : req.body.emailUser
+         })
+         res.json("msg: usuario cadastrado")
+    }catch(err){
+        res.json(err)
+
+    }
 });
+
+//Rota login
+app.post("/login", async (req, res) => {
+    const { email, senha } = req.body;
+    try {
+      const reqs = await UserModel.findOne({ email: email });
+  
+      if(reqs.password === senha) {
+          try{
+             const responseDataUser =  authenticationUser({email: email, password: senha});
+             return res.json({name: reqs.name, surname: reqs.surname, statusLogin: true ,...responseDataUser})
+             
+          }catch(err){
+              return res.status(401).json({msg: "Algo deu errado, tente novamente"})
+          }
+      }else{
+        res.json({msg: "senha incorreta"})
+      }
+    } catch (err) {
+      res.json({msg: "usuario não encontrado"});
+    }
+  });
+  
+
 
 //Start server
 let port = process.env.PORT || 3000;
