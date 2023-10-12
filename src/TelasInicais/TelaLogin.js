@@ -8,12 +8,30 @@ import DefaultButton from "../DefaultButton/DefaultButton";
 
 export default function Login(){
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
   const [inputs, setInputs] = useState('');
   const [ocultarSenha, setOcultarsenha] = useState(true);
 
   const NavigationLogin = () => {
     navigation.navigate("SistemaNavigator");
   };
+
+//Envia os dados do formulario para o banco 
+async function Login() 
+{
+  let reqs = await fetch(config.urlRootNode + 'login', {
+    method: 'POST',
+    headers: {
+      'Accept':'application/json',
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      emailUser: email,
+      senhaUser: inputs
+    })
+
+  })
+}
 
   return(
     <View style={{flex: 1}}>
@@ -29,6 +47,8 @@ export default function Login(){
               backgroundColor="#000000"
               underlineColor="#B6B6B6"
               activeUnderlineColor="#B6B6B6"
+               value={email}
+              onChangeText={ (texto) => setEmail(texto)}
               style={styles.email}
               textColor="#fff"
               label="Email"

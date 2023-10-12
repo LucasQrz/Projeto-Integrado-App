@@ -16,7 +16,7 @@ app.post('/create', async(req,res)=>{
     try{
         let reqs = await UserModel.create({
             'email' : req.body.emailUser,
-            'senha' : req.body.emailUser
+            'senha' : req.body.senhaUser
          })
          res.json("msg: usuario cadastrado")
     }catch(err){
@@ -33,9 +33,7 @@ app.post("/login", async (req, res) => {
   
       if(reqs.password === senha) {
           try{
-             const responseDataUser =  authenticationUser({email: email, password: senha});
-             return res.json({name: reqs.name, surname: reqs.surname, statusLogin: true ,...responseDataUser})
-             
+            
           }catch(err){
               return res.status(401).json({msg: "Algo deu errado, tente novamente"})
           }
