@@ -1,10 +1,12 @@
 import React, { useState} from 'react';
+import config from "../../config/config.json";
 import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper'
 import { Ionicons  } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
 import DefaultButton from "../DefaultButton/DefaultButton";
+import axios from 'axios';
 
 export default function Login(){
   const navigation = useNavigation();
@@ -19,18 +21,27 @@ export default function Login(){
 //Envia os dados do formulario para o banco 
 async function Login() 
 {
-  let reqs = await fetch(config.urlRootNode + 'login', {
-    method: 'POST',
-    headers: {
-      'Accept':'application/json',
-      'Content-Type':'application/json'
-    },
-    body: JSON.stringify({
-      emailUser: email,
-      senhaUser: inputs
-    })
+  console.log("chegou");
+  // let reqs = await fetch(config.urlRootNode + 'login', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Accept':'application/json',
+  //     'Content-Type':'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //   
+  //   })
 
+  // }).then( re  emailUser: email,
+  //     senhaUser: inputss => console.log(res))
+
+  const reqs = await axios.post(config.urlRootNode + "login",
+  {
+    emailUser: email,
+        senhaUser: inputs
   })
+
+  console.log(reqs);
 }
 
   return(
@@ -86,7 +97,7 @@ async function Login()
             buttonText={'Acessar'}
             backgroundColor={'#26034D'}
             marginTop={14}
-            click={NavigationLogin}
+            click={Login}
             width={200}
             height={50}
           />

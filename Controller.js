@@ -27,13 +27,18 @@ app.post('/create', async(req,res)=>{
 
 //Rota login
 app.post("/login", async (req, res) => {
+  console.log("login");
     const { email, senha } = req.body;
     try {
       const reqs = await UserModel.findOne({ email: email });
   
       if(reqs.password === senha) {
           try{
-            
+            res.status(200).json({
+              email: email,
+              status: "OK"
+            })
+            return
           }catch(err){
               return res.status(401).json({msg: "Algo deu errado, tente novamente"})
           }
@@ -48,7 +53,7 @@ app.post("/login", async (req, res) => {
 
 
 //Start server
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3006;
 app.listen(port, async (req,res)=>{
     console.log(port,'Servidor Rodando');
 
