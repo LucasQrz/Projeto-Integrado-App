@@ -27,12 +27,19 @@ export default function Cadastro() {
         'Content-Type':'application/json'
       },
       body: JSON.stringify({
-        emailUser: input,
-        senhaUser: input2
+        email: input,
+        senha: input2
       })
-
-    })
+    })//.then( res => res.json()).then(res => res)
+    if (reqs.status === "OK") {
+      try {
+        navigation.navigate("TelaLogin")
+      } catch (error) {
+        console.log("error")
+      }
+    } 
   }
+  
 
   return (
     // Esse view vai ser a logo
