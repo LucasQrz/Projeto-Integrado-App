@@ -12,13 +12,15 @@ app.use(express.json());
 
 //Routes
 app.post('/create', async(req,res)=>{
-
   try{
       let reqs = await UserModel.create({
         'email' : req.body.email,
         'senha' : req.body.senha
        })
-       res.json("msg: usuario cadastrado")
+       res.json({
+        email: reqs.dataValues.email ,
+        status: "OK",
+        msg: "usuario cadastrado"})
   }catch(err){
       res.json(err)
 

@@ -20,7 +20,7 @@ export default function Cadastro() {
   //Envia os dados do formulario para o banco 
   async function registerUser() 
   {
-    let reqs = await fetch(config.urlRootNode + 'create', {
+    let  reqs = await fetch(config.urlRootNode + 'create', {
       method: 'POST',
       headers: {
         'Accept':'application/json',
@@ -30,7 +30,8 @@ export default function Cadastro() {
         email: input,
         senha: input2
       })
-    })//.then( res => res.json()).then(res => res)
+    }).then( res => res.json()).then(res => res)
+    console.log(reqs);
     if (reqs.status === "OK") {
       try {
         navigation.navigate("TelaLogin")

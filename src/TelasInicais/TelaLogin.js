@@ -33,7 +33,8 @@ async function Login()
      senha: inputs
     })
 
-  })//.then( res => res.json()).then( res => console.log(res))
+  }).then( res => res.json()).then( res => res)
+  console.log(reqs)
 if (reqs.status === "OK") {
   try {
     navigation.navigate("SistemaNavigator")
