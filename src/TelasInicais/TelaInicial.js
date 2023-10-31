@@ -16,17 +16,17 @@ export default function App(){
 
   return(
     <View style={{flex: 1}}>
-      <ImageBackground source={require('../Assets/fundoInicio.jpeg')} resizeMode="cover" 
-        style={{flex: 1, justifyContent: 'center'}}>
+      <ImageBackground source={require('../Assets/fundoTelaLogin.png')} 
+        resizeMode="cover" style={{flex: 1, justifyContent: 'center'}}>
 
-          <View style={{alignItems: 'center'}}>
-            <Image source={require('../Assets/logo.png')} />
+          <View style={{alignItems: 'center',}}>
+            <Image source={require('../Assets/logoSpaceCine.png')} />
           </View>
 
         <View style={{ alignItems: 'center'}}> 
           <DefaultButton
             buttonText={'Acessar'}
-            backgroundColor={'#26034D'}
+            backgroundColor={'#000000'}
             click={NavigationLogin}
             width={200}
             height={50}
@@ -34,7 +34,7 @@ export default function App(){
 
           <DefaultButton
             marginTop={14}
-            backgroundColor={'#26034D'}
+            backgroundColor={'#000000'}
             buttonText={'Cadastrar'}
             click={NavigationCadastro}
             width={200}

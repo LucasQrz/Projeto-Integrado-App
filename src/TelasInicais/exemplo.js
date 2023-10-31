@@ -11,6 +11,7 @@
   style={styles.input}
   label="Confirmar senha"
 />
+
 {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto */}
 <TouchableOpacity style={styles.icon} onPress={() => setHidepass2(!hidePass2)}>
   {hidePass2 ?

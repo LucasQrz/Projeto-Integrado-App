@@ -7,6 +7,7 @@ import Inicio from '../Sistema/Inicio';
 import Config from '../Sistema/Config';
 import Perfil from '../Sistema/Perfil';
 import Lista from '../Sistema/ListaFilmes';
+import Favoritos from '../Sistema/Favoritos';
 import EditDrawer from './EditDrawer';
 
 const Drawer = createDrawerNavigator();
@@ -15,9 +16,9 @@ export default function SistemaNavigator() {
     return (
         <Drawer.Navigator drawerContent={(props) => <EditDrawer{...props}/>}
             screenOptions={{
-            drawerActiveBackgroundColor: '#954DFF',
-            drawerActiveTintColor: '#000000',
-            drawerInactiveTintColor: '#FCFCFC',
+            drawerActiveBackgroundColor: '#112632',
+            drawerActiveTintColor: '#FFFFFF',
+            drawerInactiveTintColor: '#FFFFFF',
             drawerLabelStyle: {marginLeft: -25, fontSize: 16}}} >
 
             <Drawer.Screen name="Inicio" component={Inicio} 
@@ -31,7 +32,16 @@ export default function SistemaNavigator() {
 
              <Drawer.Screen name="Lista de Filmes" component={Lista} 
                 options={{headerStyle: 
-                {backgroundColor: '#26034D'},
+                {backgroundColor: '#000000'},
+                headerTintColor: '#fff', headerTitleAlign: 'center',
+                drawerIcon: ({color}) => (
+                <Ionicons name='list-outline' size={22} color={color} />
+            )}}
+            />
+            
+            <Drawer.Screen name="Favoritos" component={Favoritos} 
+                options={{headerStyle: 
+                {backgroundColor: '#000000'},
                 headerTintColor: '#fff', headerTitleAlign: 'center',
                 drawerIcon: ({color}) => (
                 <Ionicons name='list-outline' size={22} color={color} />
@@ -40,7 +50,7 @@ export default function SistemaNavigator() {
 
             <Drawer.Screen name="Perfil" component={Perfil} 
                 options={{headerStyle: 
-                {backgroundColor: '#26034D'},
+                {backgroundColor: '#000000'},
                 headerTintColor: '#fff', headerTitleAlign: 'center',
                 drawerIcon: ({color}) => (
                 <Ionicons name='person-outline' size={22} color={color} />
@@ -49,7 +59,7 @@ export default function SistemaNavigator() {
             
             <Drawer.Screen name="Configurações" component={Config} 
                 options={{headerStyle: 
-                {backgroundColor: '#26034D'},
+                {backgroundColor: '#000000'},
                 headerTintColor: '#fff', headerTitleAlign: 'center',
                 drawerIcon: ({color}) => (
                 <Ionicons name='settings-outline' size={22} color={color} />

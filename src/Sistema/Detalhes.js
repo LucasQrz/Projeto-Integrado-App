@@ -56,8 +56,8 @@ export default function Detalhes({ navigation,route }) {
 
             <TouchableOpacity onPress={() => addFilmeToFavoritos(filme,  Alert.alert("Filme favoritado com sucesso!"))}>
               <View style={{alignItems: 'center', paddingRight: 25}}>
-                <Ionicons name='add-circle-outline' size={35} color="#954DFF"/>
-                <Text style={{color: '#954DFF', fontSize: 12}}>Favoritar</Text>
+                <Ionicons name='add-circle-outline' size={35} color="#65BEC4"/>
+                <Text style={{color: '#65BEC4', fontSize: 12}}>Favoritar</Text>
               </View>
             </TouchableOpacity>
             

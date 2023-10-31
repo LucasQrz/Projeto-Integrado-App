@@ -1,52 +1,70 @@
 import React, { useState } from "react";
 import config from "../../config/config.json";
-import { TextInput } from 'react-native-paper';
-import { ImageBackground, Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
+import { TextInput } from "react-native-paper";
+import {
+  ImageBackground,
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 import DefaultButton from "../DefaultButton/DefaultButton";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function Cadastro() {
   const navigation = useNavigation();
   const [input, setInput] = useState(null); //aqui fica o valor que o setInput e o nome que e input então fica assim 'input = setInput'
   const [hidePass, setHidepass] = useState(true);
-  const [input2, setInput2] = useState(null);//aqui fica o valor que o setInput2 e o nome que e input2 então fica assim 'input2 = setInput2'
+  const [input2, setInput2] = useState(null); //aqui fica o valor que o setInput2 e o nome que e input2 então fica assim 'input2 = setInput2'
   const [hidePass2, setHidepass2] = useState(true);
 
   const NavigationSistema = () => {
     navigation.navigate("TelaLogin");
   };
-  //Envia os dados do formulario para o banco 
-  async function registerUser() 
-  {
-    let reqs = await fetch(config.urlRootNode + 'create', {
-      method: 'POST',
+  //Envia os dados do formulario para o banco
+  //cria uma função assicrona para enviar os dados para o banco
+  async function registerUser() {
+    {
+      /* aqui passa a url, localmente (ip local)*/
+    }
+    {
+      /*" urlRootNode é uma url criada la nas configurações do json" */
+    }
+    {
+      /*Metodo POST : solicitar que o servidor web aceite os dados anexados no corpo da mensagem de requisição para armazenamento */
+    }
+    let reqs = await fetch(config.urlRootNode + "create", {
+      method: "POST",
       headers: {
-        'Accept':'application/json',
-        'Content-Type':'application/json'
-      },
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      }, //Os parametros que queremos passar la para o banco de dados
       body: JSON.stringify({
         emailUser: input,
-        senhaUser: input2
-      })
-
-    })
+        senhaUser: input2,
+      }),
+    });
   }
 
   return (
     // Esse view vai ser a logo
+    
     <View style={{ flex: 1 }}>
-      <ImageBackground source={require('../Assets/fundoCadastro.jpg')}
-        resizeMode="cover" style={{ flex: 1, justifyContent: 'center' }}>
-
-        <View style={{ alignItems: 'center' }}>
-          <Image source={require('../Assets/logo.png')} />
+      <ImageBackground
+        source={require('../Assets/fundoTelaLogin.png')}
+        resizeMode="cover"
+        style={{ flex: 1, justifyContent: "center" }}
+      >
+        <View style={styles.logo}>
+          <Image source={require('../Assets/logoSpaceCine.png')} />
         </View>
 
         {/* Esse view e a barra do email */}
         <View style={styles.container}>
-        
           <TextInput
             backgroundColor="#000000"
             underlineColor="#B6B6B6"
@@ -70,46 +88,52 @@ export default function Cadastro() {
               label="Senha"
             />
             {/* Aqui e o botão que chama a função para mudar o valor do olho e esconder o texto   */}
-            <TouchableOpacity style={styles.icon} onPress={() => setHidepass(!hidePass)}>
-              {hidePass ?
-                <Ionicons name="eye" size={25} color='gray' />
-                :
-                <Ionicons name="eye-off" size={25} color='gray' />
-              }
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={() => setHidepass(!hidePass)}
+            >
+              {hidePass ? (
+                <Ionicons name="eye" size={25} color="gray" />
+              ) : (
+                <Ionicons name="eye-off" size={25} color="gray" />
+              )}
             </TouchableOpacity>
           </View>
           {/* Esse view e a barra da CORFIRMAR SENHA */}
-          
+
           {/* vai ficar o nome "Já tem uma conta?" */}
-          <View style={{ alignSelf: 'flex-end', paddingRight: 10 }}>
-            <Text style={styles.texto}>Já tem uma conta?{input}-{input2} </Text>
+          <View style={{ alignSelf: "flex-end", paddingRight: 10 }}>
+            <Text style={styles.texto}>
+              Já tem uma conta?{input}-{input2}{" "}
+            </Text>
           </View>
         </View>
         {/* Aqui e o botão cadastrar */}
         {/* aqui tem duas opções para fazer mudar a função DefaultButton ou colocar */}
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: "center" }}>
           <DefaultButton
-            buttonText={'Cadastrar'}
-            backgroundColor={'#903848'}
+            buttonText={"Cadastrar"}
+            backgroundColor={"#000000"}
             marginTop={14}
             click={registerUser}
-            width={'100%'}
+            width={"70%"}
             height={50}
           />
         </View>
-
       </ImageBackground>
     </View>
-  )
-};
+
+
+  );
+}
 // Aqui fica os estilos.
 const styles = StyleSheet.create({
   senha: {
     flexDirection: "row",
-    width: '100%',
+    width: "100%",
     borderRadius: 5,
     height: 70,
-    alignItems: 'center'
+    alignItems: "center",
   },
 
   button: {
@@ -121,28 +145,34 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: '85%',
+    width: "85%",
     height: 50,
-    pedding: 8
+    pedding: 8,
   },
 
   icon: {
-    width: '15%',
+    width: "15%",
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   container: {
-    backgroundColor: '#000000',
+    backgroundColor: "#000000",
     borderRadius: 20,
     margin: 10,
     padding: 10,
   },
+  logo: {
+    width: 400,
+    height: 50,
+
+    alignItems: "center",
+  },
 
   texto: {
     fontSize: 15,
-    color: '#904B9C',
-    fontSize: 18
-  }
+    color: "#FFFFFF",
+    fontSize: 18,
+  },
 });

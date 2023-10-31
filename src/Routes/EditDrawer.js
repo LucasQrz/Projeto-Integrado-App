@@ -6,8 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const EditDrawer = (props) => {
     return(
-        <View style={{flex: 1, backgroundColor: '#26034D'}}>
-
+        <View style={{flex: 1, backgroundColor: '#000000'}}>
+{/*USUARIO*/}
             <DrawerContentScrollView {...props}>
                 <ImageBackground source={require('../Assets/fundoPerfil.jpeg')}
                     style={{padding: 20}}>
@@ -22,7 +22,7 @@ const EditDrawer = (props) => {
                     </View>
                 </ImageBackground>
 
-                <View style={{flex: 1, backgroundColor: '#26034D', paddingTop: 10}}>
+                <View style={{flex: 1, backgroundColor: '#000000', paddingTop: 10}}>
                     <DrawerItemList {...props}/>
                 </View>
             </DrawerContentScrollView>
