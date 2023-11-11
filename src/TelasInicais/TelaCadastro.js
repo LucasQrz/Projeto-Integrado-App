@@ -25,30 +25,34 @@ export default function Cadastro() {
   const NavigationSistema = () => {
     navigation.navigate("TelaLogin");
   };
-  //Envia os dados do formulario para o banco
-  //cria uma função assicrona para enviar os dados para o banco
-  async function registerUser() {
-    {
-      /* aqui passa a url, localmente (ip local)*/
-    }
-    {
-      /*" urlRootNode é uma url criada la nas configurações do json" */
-    }
-    {
-      /*Metodo POST : solicitar que o servidor web aceite os dados anexados no corpo da mensagem de requisição para armazenamento */
-    }
-    let reqs = await fetch(config.urlRootNode + "create", {
-      method: "POST",
+
+  //Envia os dados do formulario para o banco 
+  async function registerUser() 
+  {
+    let  reqs = await fetch(config.urlRootNode + 'create', {
+      method: 'POST',
+
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       }, //Os parametros que queremos passar la para o banco de dados
       body: JSON.stringify({
-        emailUser: input,
-        senhaUser: input2,
-      }),
-    });
+
+        email: input,
+        senha: input2
+      })
+    }).then( res => res.json()).then(res => res)
+    console.log(reqs);
+    if (reqs.status === "OK") {
+      try {
+        navigation.navigate("TelaLogin")
+      } catch (error) {
+        console.log("error")
+      }
+    } 
+
   }
+  
 
   return (
     // Esse view vai ser a logo

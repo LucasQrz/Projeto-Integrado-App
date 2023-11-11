@@ -1,19 +1,48 @@
 import React, { useState} from 'react';
+import config from "../../config/config.json";
 import { Text, Image, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { Ionicons  } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
 import DefaultButton from "../DefaultButton/DefaultButton";
+import axios from 'axios';
 
 export default function Login(){
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
   const [inputs, setInputs] = useState('');
   const [ocultarSenha, setOcultarsenha] = useState(true);
 
   const NavigationLogin = () => {
     navigation.navigate("SistemaNavigator");
   };
+
+//Envia os dados do formulario para o banco 
+async function Login() 
+{
+  console.log("chegou");
+  let reqs = await fetch(config.urlRootNode + 'login', {
+    method: 'POST',
+    headers: {
+      'Accept':'application/json',
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+     email: email,
+     senha: inputs
+    })
+
+  }).then( res => res.json()).then( res => res)
+  console.log(reqs)
+if (reqs.status === "OK") {
+  try {
+    navigation.navigate("SistemaNavigator")
+  } catch (error) {
+    console.log("error")
+  }
+} 
+}
 
   return(
     <View style={{flex: 1}}>
@@ -29,6 +58,8 @@ export default function Login(){
               backgroundColor="#000000"
               underlineColor="#B6B6B6"
               activeUnderlineColor="#B6B6B6"
+               value={email}
+              onChangeText={ (texto) => setEmail(texto)}
               style={styles.email}
               textColor="#fff"
               label="Email"
@@ -66,7 +97,7 @@ export default function Login(){
             buttonText={'Acessar'}
             backgroundColor={'#000000'}
             marginTop={14}
-            click={NavigationLogin}
+            click={Login}
             width={200}
             height={50}
           />
