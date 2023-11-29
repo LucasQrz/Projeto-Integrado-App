@@ -4,6 +4,13 @@ import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Perfil = () => {
+
+const dadosDoUsario = {
+  nome: "",
+  genero: "",
+  filmeFavorito: ""
+
+}
   return (
     <View style={{flex: 1, backgroundColor: '#000000'}}>
 
@@ -23,7 +30,12 @@ const Perfil = () => {
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
+<<<<<<< HEAD
             placeholder='Daniely'
+=======
+          onChangeText={(text) => dadosDoUsario.nome = text}
+            placeholder='Lucas'
+>>>>>>> 854118a5ef31b30565553d64c099a1bf885bb5e9
             selectionColor='#fff'
             placeholderTextColor="#B6B6B6"
             style={styles.input}
@@ -39,6 +51,8 @@ const Perfil = () => {
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
+                    onChangeText={(text) => dadosDoUsario.genero = text}
+
             placeholder='Terror, Suspense, Ação...'
             selectionColor='#fff'
             placeholderTextColor="#B6B6B6"
@@ -55,6 +69,8 @@ const Perfil = () => {
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
+                    onChangeText={(text) => dadosDoUsario.filmeFavorito = text}
+
             placeholder='It: A coisa'
             selectionColor='#fff'
             placeholderTextColor="#B6B6B6"
