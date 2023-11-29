@@ -55,7 +55,7 @@ export default function Inicio({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('Favoritos',{filmes: filmesFavoritos, addFilmeToFavoritos, filmesFavoritos})}>
         <View style={{alignItems: 'center'}}>
         <Image
-          source={require('../Assets/logoInicio.png')}
+          source={require('../Assets/favoritos.png')}
         />
         </View>
       </TouchableOpacity>

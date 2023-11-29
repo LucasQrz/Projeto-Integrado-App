@@ -23,7 +23,7 @@ const Perfil = () => {
 
         <View style={{paddingLeft: 65, width: '90%'}}>
           <TextInput
-            placeholder='Lucas'
+            placeholder='Daniely'
             selectionColor='#fff'
             placeholderTextColor="#B6B6B6"
             style={styles.input}
